@@ -15,5 +15,18 @@
       { "src": "assets/screenshots/reminder-drawer.png", "alt": "Navigation drawer with Settings, History, Sync history, and categories" },
       { "src": "assets/screenshots/reminder-editor.png", "alt": "Edit Reminder screen with priority, category, date, time, and repeat rule" }
     ]
+  },
+  {
+    "id": "cards",
+    "name": "Cards",
+    "tagline": "Offline, biometric-locked vault for your credit and debit cards.",
+    "category": "Finance",
+    "platform": "Android",
+    "icon": "assets/icons/cards.png",
+    "repo": "jitendrajangidcodes-cloud/Cards-pub",
+    "packageId": "com.pnsjy.cards",
+    "about": "Cards scans the front and back of your credit and debit cards, extracts the details with on-device OCR, and stores both the structured data and the encrypted card images in a fully encrypted, biometric-locked local vault. There is no cloud, no account, and no analytics -- the app makes exactly one network call, ever: an optional, user-initiated check for a new version. CVV is never stored by default.",
+    "requirements": "Android 8.0 (Oreo) or newer. Distributed outside the Play Store -- Android will ask permission to install from this source the first time.",
+    "screenshots": []
   }
 ]
