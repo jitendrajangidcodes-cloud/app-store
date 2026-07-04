@@ -62,14 +62,15 @@ class _CatalogScreenState extends State<CatalogScreen>
     try {
       final catalog = await _repo.load();
       final statuses = await _updates.statusForAll(catalog);
-      final self = await SelfUpdate().check();
       if (!mounted) return;
       setState(() {
         _catalog = catalog;
         _statuses = statuses;
-        _selfUpdate = self;
         _loading = false;
       });
+      // Self-update hits the GitHub API; run it after the catalog is on screen
+      // so a slow network never blocks the first render.
+      _checkSelfUpdate();
     } catch (e) {
       if (!mounted) return;
       setState(() {
@@ -77,6 +78,11 @@ class _CatalogScreenState extends State<CatalogScreen>
         _loading = false;
       });
     }
+  }
+
+  Future<void> _checkSelfUpdate() async {
+    final self = await SelfUpdate().check();
+    if (mounted && self != null) setState(() => _selfUpdate = self);
   }
 
   Future<void> _refreshStatuses() async {
@@ -102,18 +108,22 @@ class _CatalogScreenState extends State<CatalogScreen>
 
   Widget _body() {
     final t = context.tokens;
-    if (_loading) {
-      return ListView(children: [
-        const SizedBox(height: 240),
-        Center(child: CircularProgressIndicator(color: t.accent)),
-      ]);
-    }
-    if (_error != null) {
-      return ListView(children: [
-        const SizedBox(height: 200),
-        Center(child: Text("Could not load catalog.\n$_error",
-            textAlign: TextAlign.center, style: dmSans(14, color: t.muted))),
-      ]);
+
+    if (_loading || _error != null) {
+      return ListView(
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 40),
+        children: [
+          TopBar(onToggleTheme: widget.onToggleTheme),
+          const SizedBox(height: 120),
+          if (_loading)
+            Center(child: CircularProgressIndicator(color: t.accent))
+          else
+            Center(
+              child: Text("Could not load catalog.\n$_error",
+                  textAlign: TextAlign.center, style: dmSans(14, color: t.muted)),
+            ),
+        ],
+      );
     }
 
     final apps = _catalog!.apps;
@@ -125,7 +135,23 @@ class _CatalogScreenState extends State<CatalogScreen>
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 40),
       children: [
         TopBar(onToggleTheme: widget.onToggleTheme),
-        const SizedBox(height: 24),
+        const SizedBox(height: 28),
+        Row(
+          children: [
+            const BrandLogo(size: 60),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("PNSJY Store", style: sora(20, weight: FontWeight.w800, color: t.text)),
+                  Text("apps by Jitendra", style: dmSans(13, color: t.muted)),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 22),
         Text("Apps I've built,", style: sora(30, weight: FontWeight.w800, color: t.text)),
         ShaderMask(
           shaderCallback: (r) => const LinearGradient(

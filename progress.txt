@@ -53,6 +53,21 @@
 #  Verified on Android 11 emulator: launches, MainActivity fully drawn, UI renders,
 #  real icons load, install-state correct. Fixed APK republished to v1.0.0+1.
 
+## Phase J — Branding tweaks
+### J1 — remove "live from GitHub" chip from site (index.html, app.html) [BUILT-AWAITING-VERIFY]
+### J2 — remove live chip from app top bar [VERIFIED on emulator]
+### J3 — show company logo prominently in app (top bar + hero) [VERIFIED on emulator]
+### J4 — non-blocking load: catalog renders before self-update GitHub call [VERIFIED on emulator]
+
+## Phase K — Update freshness (TODO, follow-up; not blocking APK test)
+# FINDING: live releases.json lagged real releases (manifest 2.18.22 vs actual
+# 2.18.23) because the manifest workflow only triggers on app-store pushes + 6h
+# cron -- a new release in an APP repo does NOT rebuild the manifest.
+# Also WorkManager first run is delayed + 6h interval, so notifications aren't prompt.
+### K1 — trigger manifest rebuild from each app repo on release (repository_dispatch) [TODO]
+### K2 — shorten cron + make store fall back to live API for freshness [TODO]
+### K3 — review notification cadence / first-run [TODO]
+
 ## SHIPPED: pushed to main; Pages live; manifest workflow green; release published.
 ## Remaining verification is on YOUR device: install the store APK and confirm
 ## install/update/open, notifications, feedback links, and real icons render.
