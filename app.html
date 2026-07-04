@@ -14,19 +14,21 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
+
+<div class="glow-bg"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
+
+<div class="topbar-wrap">
   <div class="topbar">
     <a class="wordmark" href="index.html">
-      <span class="mark"><img src="assets/brand/pnsjy-mark.png" alt=""></span>
-      <span class="name">
-        <span class="brand">PNSJY</span>
-        <span class="byline">by Jitendra</span>
-      </span>
+      <span id="nav-mark"></span>
+      <span class="byline">by Jitendra</span>
     </a>
+    <div class="spacer"></div>
+    <span class="live-chip"><span class="dot"></span>live from GitHub Releases</span>
     <div class="topbar-actions">
       <button class="theme-toggle" type="button" aria-label="Toggle color theme">
         <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
@@ -34,7 +36,9 @@
       </button>
     </div>
   </div>
+</div>
 
+<div class="wrap">
   <div id="detail-root">
     <div class="empty-state">Loading…</div>
   </div>
@@ -43,6 +47,8 @@
 <script src="script.js"></script>
 <script>
 (async function () {
+  document.getElementById("nav-mark").innerHTML = pnsjyLogoHTML(30);
+
   const root = document.getElementById("detail-root");
   const id = new URLSearchParams(location.search).get("id");
   const apps = await loadApps();
@@ -50,7 +56,7 @@
 
   if (!app) {
     root.innerHTML = `
-      <a class="back-link" href="index.html">&larr; Back to all apps</a>
+      <a class="back-link" href="index.html">&larr; All apps</a>
       <div class="empty-state">App not found.</div>
     `;
     return;
@@ -59,75 +65,99 @@
   document.title = `${app.name} — PNSJY`;
 
   root.innerHTML = `
-    <a class="back-link" href="index.html">&larr; Back to all apps</a>
-    <div class="detail-head">
-      <img class="detail-icon" src="${app.icon}" alt="${app.name} icon">
-      <div>
+    <a class="back-link" href="index.html">&larr; All apps</a>
+
+    <section class="detail-head">
+      ${appTileHTML(app, 96)}
+      <div class="titles">
         <h1>${app.name}</h1>
         <p class="tagline">${app.tagline}</p>
+        <div class="detail-chips">
+          <span class="chip-static accent" data-stat="version">…</span>
+          <span class="chip-static plain" data-stat="size">…</span>
+          <span class="chip-static plain">${app.platform}</span>
+          <span class="chip-static plain">${app.category}</span>
+        </div>
       </div>
-    </div>
-
-    <div class="stat-row">
-      <div class="stat-cell"><span class="label">Version</span><span class="value" data-stat="version">…</span></div>
-      <div class="stat-cell"><span class="label">Size</span><span class="value" data-stat="size">…</span></div>
-      <div class="stat-cell"><span class="label">Platform</span><span class="value">${app.platform}</span></div>
-      <div class="stat-cell"><span class="label">Category</span><span class="value">${app.category}</span></div>
-    </div>
-
-    <div class="download-block">
       <button class="download-btn" aria-disabled="true" data-download-btn>Checking latest release…</button>
-      <span class="download-meta" data-stat="published"></span>
-    </div>
+    </section>
 
     ${
       app.screenshots && app.screenshots.length
-        ? `<div class="screenshot-row">${app.screenshots
-            .map((s) => `<img src="${s.src}" alt="${s.alt}" loading="lazy">`)
-            .join("")}</div>`
+        ? `<section class="screenshot-section">
+            <h2>Screenshots</h2>
+            <div class="screenshot-row">${app.screenshots
+              .map((s) => `<img src="${s.src}" alt="${s.alt}" loading="lazy">`)
+              .join("")}</div>
+          </section>`
         : ""
     }
 
-    <div class="detail-grid">
-      <div>
-        <h2>About</h2>
-        <p class="about-text">${app.about}</p>
-        <div class="requirements">
-          <span class="label">Requirements</span>
-          <p>${app.requirements}</p>
+    <section class="about-card">
+      <h2>About</h2>
+      <p>${app.about}</p>
+      <p class="requirements">${app.requirements}</p>
+    </section>
+
+    <section class="two-col">
+      <div class="notes-card">
+        <h2>Release notes</h2>
+        <div id="release-history">
+          <div class="release-entry"><p>Loading release notes…</p></div>
         </div>
       </div>
-      <div class="whats-new-card">
-        <h2>What's new</h2>
-        <p class="notes" data-stat="notes">Loading release notes…</p>
+
+      <div class="install-card">
+        <h2>Install in 3 steps</h2>
+        <div class="install-steps">
+          <div class="install-step"><span class="num">1</span><span class="txt">Tap <strong>Download APK</strong> above</span></div>
+          <div class="install-step"><span class="num">2</span><span class="txt">Allow <strong>install from unknown sources</strong> if prompted</span></div>
+          <div class="install-step"><span class="num">3</span><span class="txt">Open the file and tap <strong>Install</strong></span></div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>PNSJY — built and maintained by Jitendra.</span>
+      <span class="mono">github.io/app-store</span>
+    </footer>
   `;
 
-  const release = await fetchLatestRelease(app.repo);
   const versionEl = root.querySelector('[data-stat="version"]');
   const sizeEl = root.querySelector('[data-stat="size"]');
-  const publishedEl = root.querySelector('[data-stat="published"]');
-  const notesEl = root.querySelector('[data-stat="notes"]');
   const downloadBtn = root.querySelector("[data-download-btn]");
+  const historyEl = root.querySelector("#release-history");
 
-  if (release && release.downloadUrl) {
-    versionEl.textContent = `v${release.version}`;
-    sizeEl.textContent = formatSize(release.sizeBytes);
-    publishedEl.textContent = `Released ${formatDate(release.publishedAt)}`;
-    notesEl.textContent = release.notes || "No release notes for this version.";
+  const history = await fetchReleaseHistory(app.repo, 3);
+  const latest = history[0];
+
+  if (latest && latest.downloadUrl) {
+    versionEl.textContent = `v${latest.version}`;
+    sizeEl.textContent = formatSize(latest.sizeBytes);
 
     const a = document.createElement("a");
     a.className = "download-btn";
-    a.href = release.downloadUrl;
-    a.textContent = `Download APK · v${release.version}`;
+    a.href = latest.downloadUrl;
+    a.textContent = `⬇ Download APK · v${latest.version}`;
     downloadBtn.replaceWith(a);
+
+    historyEl.innerHTML = history
+      .map(
+        (rel, i) => `
+        <div class="release-entry ${i === 0 ? "" : "old"}">
+          <div class="row">
+            <span class="chip-static accent">v${rel.version}</span>
+            <span class="chip-static plain" style="border:none;padding:0;">${i === 0 ? "latest" : formatDate(rel.publishedAt)}</span>
+          </div>
+          <p>${rel.notes || "No release notes for this version."}</p>
+        </div>`
+      )
+      .join("");
   } else {
     versionEl.textContent = "unavailable";
     sizeEl.textContent = "--";
-    publishedEl.textContent = "";
-    notesEl.textContent = "Could not reach GitHub Releases right now — try again shortly.";
     downloadBtn.textContent = "Download unavailable";
+    historyEl.innerHTML = `<div class="release-entry"><p>Could not reach GitHub Releases right now — try again shortly.</p></div>`;
   }
 })();
 </script>

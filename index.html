@@ -15,19 +15,21 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
+
+<div class="glow-bg"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
+
+<div class="topbar-wrap">
   <div class="topbar">
     <a class="wordmark" href="index.html">
-      <span class="mark"><img src="assets/brand/pnsjy-mark.png" alt=""></span>
-      <span class="name">
-        <span class="brand">PNSJY</span>
-        <span class="byline">by Jitendra</span>
-      </span>
+      <span id="nav-mark"></span>
+      <span class="byline">by Jitendra</span>
     </a>
+    <div class="spacer"></div>
+    <span class="live-chip"><span class="dot"></span>live from GitHub Releases</span>
     <div class="topbar-actions">
       <button class="theme-toggle" type="button" aria-label="Toggle color theme">
         <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
@@ -35,38 +37,80 @@
       </button>
     </div>
   </div>
+</div>
 
-  <div class="hero-row">
-    <div class="hero">
-      <span class="eyebrow">Personal build catalog</span>
-      <h1>Apps I've built, <em>ready to install.</em></h1>
-      <p>Direct APK downloads, no store review, no accounts required. Updated the moment I ship a new release — nothing appears here until I add it myself.</p>
+<div class="wrap">
+
+  <section class="hero-section">
+    <div class="hero-col">
+      <span class="eyebrow-chip">personal build catalog</span>
+      <div class="hero-buddies" id="hero-logo"></div>
+      <h1>Apps I've built, <span class="grad">ready to install.</span></h1>
+      <p>Direct APK downloads — no store review, no accounts. Updated the moment a new release ships. Nothing appears here unless I add it myself.</p>
+      <div class="hero-actions">
+        <a href="#apps" class="btn-primary">Browse apps</a>
+        <a href="#install-tip" class="btn-ghost">How installs work</a>
+      </div>
     </div>
-    <div class="hero-banner">
-      <img src="assets/brand/pnsjy-logo-light.jpg" alt="PNSJY — Information Technology Solutions">
+
+    <div class="phone-stage">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-notch"><span></span></div>
+          <div class="phone-title">
+            <span class="name">Reminder</span>
+            <span class="sub">3 upcoming today</span>
+          </div>
+          <div class="phone-list">
+            <div class="phone-item active">
+              <div class="dot" style="background:#2f7ee3;"></div>
+              <div class="txt"><span class="t">Pay electricity bill</span><span class="s">Today · 6:00 PM</span></div>
+            </div>
+            <div class="phone-item">
+              <div class="dot" style="background:#f0a92c;"></div>
+              <div class="txt"><span class="t">Call supplier</span><span class="s">Today · 8:30 PM</span></div>
+            </div>
+            <div class="phone-item">
+              <div class="dot" style="background:#3fae6a;"></div>
+              <div class="txt"><span class="t">Gym at 7</span><span class="s">Tomorrow · 7:00 AM</span></div>
+            </div>
+          </div>
+          <div class="phone-fab"><span>+</span></div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section-label">
-    <h2>All apps</h2>
-    <span id="app-count"></span>
-  </div>
+  <section class="stats-strip">
+    <div class="stat-tile"><span class="big">Direct APK</span><span class="small">no store, no middleman</span></div>
+    <div class="stat-tile"><span class="big">0 accounts</span><span class="small">download and install, done</span></div>
+    <div class="stat-tile"><span class="big">Auto-versioned</span><span class="small">synced with GitHub Releases</span></div>
+  </section>
 
-  <div class="app-grid" id="app-grid"></div>
+  <section id="apps">
+    <div class="section-label">
+      <h2>All apps</h2>
+      <span id="app-count"></span>
+    </div>
+    <div class="app-grid" id="app-grid"></div>
+  </section>
 
-  <footer class="site-footer">
-    <span>Built and maintained by Jitendra.</span>
-    <span id="footer-status">Live version data from GitHub Releases.</span>
+  <footer class="site-footer" id="install-tip">
+    <span>PNSJY — built and maintained by Jitendra.</span>
+    <span class="mono">github.io/app-store</span>
   </footer>
 </div>
 
 <script src="script.js"></script>
 <script>
 (async function () {
+  document.getElementById("nav-mark").innerHTML = pnsjyLogoHTML(30);
+  document.getElementById("hero-logo").innerHTML = pnsjyLogoHTML(62);
+
   const grid = document.getElementById("app-grid");
   const countEl = document.getElementById("app-count");
   const apps = await loadApps();
-  countEl.textContent = `${apps.length} app${apps.length === 1 ? "" : "s"}`;
+  countEl.textContent = `${apps.length} published`;
 
   for (const app of apps) {
     const card = document.createElement("a");
@@ -74,22 +118,27 @@
     card.href = `app.html?id=${encodeURIComponent(app.id)}`;
     card.innerHTML = `
       <div class="row1">
-        <img class="app-icon" src="${app.icon}" alt="${app.name} icon">
+        ${appTileHTML(app, 58)}
         <div class="titles">
           <h3>${app.name}</h3>
-          <p class="tagline">${app.tagline}</p>
         </div>
       </div>
+      <p class="tagline">${app.tagline}</p>
       <div class="badge-row">
-        <span class="badge version" data-version-badge>version…</span>
-        <span class="badge category">${app.category}</span>
+        <span class="pill-download" data-version-badge>Get APK</span>
+        <span class="meta">${app.category} · Android 8+</span>
       </div>
     `;
     grid.appendChild(card);
+    attachTilt(card);
 
     fetchLatestRelease(app.repo).then((release) => {
       const badge = card.querySelector("[data-version-badge]");
-      badge.textContent = release && release.version ? `v${release.version}` : "version unavailable";
+      if (release && release.version) {
+        badge.textContent = `Get APK · ${formatSize(release.sizeBytes)}`;
+      } else {
+        badge.textContent = "Version unavailable";
+      }
     });
   }
 
@@ -97,8 +146,7 @@
   placeholder.className = "app-card placeholder";
   placeholder.innerHTML = `
     <div class="plus-glyph">+</div>
-    <div class="placeholder-title">More apps coming</div>
-    <div class="placeholder-note">Added here only when I say so — nothing appears automatically.</div>
+    <div class="placeholder-title">Next release lands here<br>— added only when I say so</div>
   `;
   grid.appendChild(placeholder);
 })();
