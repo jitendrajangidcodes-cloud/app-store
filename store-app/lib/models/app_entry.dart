@@ -6,6 +6,7 @@ class AppEntry {
   final String category;
   final String platform;
   final String colorHex;
+  final String? icon;
   final bool requiresAccount;
   final String repo;
   final String packageId;
@@ -20,6 +21,7 @@ class AppEntry {
     required this.category,
     required this.platform,
     required this.colorHex,
+    required this.icon,
     required this.requiresAccount,
     required this.repo,
     required this.packageId,
@@ -35,6 +37,7 @@ class AppEntry {
         category: j["category"] as String? ?? "",
         platform: j["platform"] as String? ?? "Android",
         colorHex: j["color"] as String? ?? "#2f7ee3",
+        icon: j["icon"] as String?,
         requiresAccount: j["requiresAccount"] as bool? ?? false,
         repo: j["repo"] as String? ?? "",
         packageId: j["packageId"] as String? ?? "",

@@ -154,6 +154,55 @@ function appTileHTML(app, size) {
   return buddyTileHTML(app.name.charAt(0).toUpperCase(), app.color || "#2f7ee3", "#ffffff", size);
 }
 
+// Real app icon (apps.json `icon`) with a colored first-letter tile behind it,
+// so a missing/failed image degrades to the branded letter instead of a gap.
+function appIconHTML(app, size) {
+  if (!app.icon) return appTileHTML(app, size);
+  const radius = Math.round(size * 0.24);
+  const font = Math.round(size * 0.5);
+  const bg = app.color || "#2f7ee3";
+  const letter = app.name.charAt(0).toUpperCase();
+  return `
+    <div class="app-icon" style="width:${size}px;height:${size}px;border-radius:${radius}px;background:${bg};">
+      <span class="fallback" style="font-size:${font}px;">${letter}</span>
+      <img src="${app.icon}" alt="${app.name} icon" loading="lazy" style="border-radius:${radius}px;" onerror="this.remove()">
+    </div>`;
+}
+
+// ── Feedback (prefilled GitHub issues) ───────────────────────────────────
+
+// Feedback opens a prefilled GitHub issue on the app-store repo -- no backend,
+// no account data, GitHub handles identity and spam. Mirrors the store app's
+// FeedbackLinks so both surfaces file into the same inbox with the same labels.
+const FEEDBACK_REPO = "jitendrajangidcodes-cloud/app-store";
+
+// The store app itself is published here; the "Get the Store app" banner pulls
+// its live version/size/download straight from these Releases.
+const STORE_REPO = "jitendrajangidcodes-cloud/pnsjy-store";
+
+function feedbackUrl(type, app) {
+  const titles = { feedback: "Feedback", suggestion: "Suggestion", bug: "Bug report" };
+  const scope = app ? ` for ${app.name}` : "";
+  const target = app ? `**App:** ${app.name}\n\n` : "";
+  const bodies = {
+    bug: `${target}**What happened:**\n\n**Steps to reproduce:**\n\n**Device / Android version:**\n`,
+    suggestion: `${target}**What would you like to see:**\n`,
+    feedback: `${target}**Your feedback:**\n`,
+  };
+  const params = new URLSearchParams({
+    title: `${titles[type]}${scope}: `,
+    labels: [type, app ? app.id : null].filter(Boolean).join(","),
+    body: bodies[type],
+  });
+  return `https://github.com/${FEEDBACK_REPO}/issues/new?${params.toString()}`;
+}
+
+function feedbackRowHTML(app) {
+  const mk = (type, label) =>
+    `<a class="feedback-link" target="_blank" rel="noopener" href="${feedbackUrl(type, app)}">${label}</a>`;
+  return `${mk("suggestion", "Suggest a feature")}${mk("bug", "Report a bug")}${mk("feedback", "Send feedback")}`;
+}
+
 // ── Card tilt-on-hover ───────────────────────────────────────────────────
 
 function attachTilt(el) {

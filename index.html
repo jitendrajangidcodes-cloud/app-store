@@ -81,6 +81,29 @@
     </div>
   </section>
 
+  <section class="store-cta" id="get-app">
+    <span class="store-cta-glow"></span>
+    <div class="store-cta-main">
+      <div class="store-cta-badge">
+        <img src="assets/brand/pnsjy-mark.png" alt="PNSJY Store logo" width="64" height="64">
+      </div>
+      <div class="store-cta-text">
+        <span class="eyebrow-chip">recommended — start here</span>
+        <h2>Get the <span class="grad">PNSJY Store</span> app</h2>
+        <p>Install it once and every app here is a single tap to install — with automatic update checks, a notification the moment a new version ships, and a store that keeps itself up to date. The best way to use this catalog.</p>
+        <div class="store-cta-chips">
+          <span class="store-feat">One-tap updates</span>
+          <span class="store-feat">Update notifications</span>
+          <span class="store-feat">Self-updating</span>
+        </div>
+      </div>
+    </div>
+    <div class="store-cta-action">
+      <a class="download-btn" id="store-download" aria-disabled="true">Checking latest release…</a>
+      <span class="store-cta-meta" id="store-meta">Android 8+ · direct APK</span>
+    </div>
+  </section>
+
   <section class="stats-strip">
     <div class="stat-tile"><span class="big">Direct APK</span><span class="small">no store, no middleman</span></div>
     <div class="stat-tile"><span class="big" id="stat-accounts">…</span><span class="small" id="stat-accounts-sub">checking apps…</span></div>
@@ -95,6 +118,12 @@
     <div class="app-grid" id="app-grid"></div>
   </section>
 
+  <section class="about-card feedback-card" id="feedback">
+    <h2>Feedback & ideas</h2>
+    <p>Suggest an app or feature, report a bug, or send a note. Each opens a GitHub issue — no accounts, no tracking.</p>
+    <div class="feedback-row" id="feedback-row"></div>
+  </section>
+
   <footer class="site-footer" id="install-tip">
     <span>PNSJY — built and maintained by Jitendra.</span>
     <span class="mono">github.io/app-store</span>
@@ -106,6 +135,20 @@
 (async function () {
   document.getElementById("nav-mark").innerHTML = pnsjyLogoHTML(30);
   document.getElementById("hero-logo").innerHTML = pnsjyLogoHTML(62);
+
+  fetchLatestRelease(STORE_REPO).then((rel) => {
+    const btn = document.getElementById("store-download");
+    const meta = document.getElementById("store-meta");
+    if (rel && rel.downloadUrl) {
+      btn.textContent = `⬇ Download Store APK · v${rel.version}`;
+      btn.href = rel.downloadUrl;
+      btn.removeAttribute("aria-disabled");
+      meta.textContent = `${formatSize(rel.sizeBytes)} · Android 8+ · direct APK`;
+    } else {
+      btn.textContent = "Store APK unavailable";
+      meta.textContent = "Try again shortly";
+    }
+  });
 
   const grid = document.getElementById("app-grid");
   const countEl = document.getElementById("app-count");
@@ -129,7 +172,7 @@
     card.href = `app.html?id=${encodeURIComponent(app.id)}`;
     card.innerHTML = `
       <div class="row1">
-        ${appTileHTML(app, 58)}
+        ${appIconHTML(app, 58)}
         <div class="titles">
           <h3>${app.name}</h3>
         </div>
@@ -155,6 +198,8 @@
       }
     });
   }
+
+  document.getElementById("feedback-row").innerHTML = feedbackRowHTML(null);
 
   const placeholder = document.createElement("div");
   placeholder.className = "app-card placeholder";

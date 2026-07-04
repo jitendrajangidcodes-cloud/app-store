@@ -68,7 +68,7 @@
     <a class="back-link" href="index.html">&larr; All apps</a>
 
     <section class="detail-head">
-      ${appTileHTML(app, 96)}
+      ${appIconHTML(app, 96)}
       <div class="titles">
         <h1>${app.name}</h1>
         <p class="tagline">${app.tagline}</p>
@@ -116,6 +116,12 @@
           <div class="install-step"><span class="num">3</span><span class="txt">Open the file and tap <strong>Install</strong></span></div>
         </div>
       </div>
+    </section>
+
+    <section class="about-card feedback-card">
+      <h2>Feedback on ${app.name}</h2>
+      <p>Have an idea, hit a bug, or just want to say something? It opens a GitHub issue — no account data shared.</p>
+      <div class="feedback-row">${feedbackRowHTML(app)}</div>
     </section>
 
     <footer class="site-footer">

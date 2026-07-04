@@ -11,4 +11,8 @@ class Config {
   // yet: the self-update check simply finds no newer release and stays quiet.
   static const storeRepo = "jitendrajangidcodes-cloud/pnsjy-store";
   static const storePackageId = "com.pnsjy.store";
+
+  // Feedback/suggestions/bug reports open a prefilled issue here. No backend,
+  // no secrets: GitHub owns identity and spam handling.
+  static const feedbackRepo = "jitendrajangidcodes-cloud/app-store";
 }

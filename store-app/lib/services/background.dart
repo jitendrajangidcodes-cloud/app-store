@@ -19,14 +19,14 @@ class Background {
       _taskName,
       frequency: const Duration(hours: 6),
       constraints: Constraints(networkType: NetworkType.connected),
-      existingWorkPolicy: ExistingWorkPolicy.keep,
+      existingWorkPolicy: ExistingPeriodicWorkPolicy.keep,
     );
   }
 }
 
 @pragma("vm:entry-point")
 void callbackDispatcher() {
-  Workmanager().executeTask((_, __) async {
+  Workmanager().executeTask((_, _) async {
     try {
       await Notifications.init();
       final catalog = await CatalogRepository().load();

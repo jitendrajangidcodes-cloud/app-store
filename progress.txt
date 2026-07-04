@@ -8,21 +8,30 @@
 ### A3 — website (index.html/app.html) reads releases.json first, live API as fallback [BUILT-AWAITING-VERIFY]
 
 ## Phase C — Distribution (app-store repo)
-### C1 — "Download the PNSJY Store app" hero entry on index.html [TODO]
+### C1 — Featured "Get the Store app" banner on index.html (live version/size/download from store repo) [BUILT-AWAITING-VERIFY]
 
-## Phase B — Flutter store app (store-app/)
-### B1 — scaffold Flutter project + pubspec [TODO]
-### B2 — theme/tokens + light/dark ThemeData mirroring web [TODO]
-### B3 — models: AppEntry, ReleaseInfo [TODO]
-### B4 — data: catalog repository (apps.json + releases.json) [TODO]
-### B5 — widgets: buddy tile, glow background, glass card, gradient button [TODO]
-### B6 — screens: catalog, detail (mirror web layout) [TODO]
-### B7 — services: installed-version lookup + Install/Update/Open state [TODO]
-### B8 — services: APK download + system installer intent (Kotlin channel + FileProvider) [TODO]
-### B9 — self-update: store checks its OWN Releases, offers one-tap update [TODO]
-### B10 — android manifest: permissions, queries, FileProvider [TODO]
-### B11 — flutter analyze + build apk gate [TODO]
-### B12 — background WorkManager check -> "update available" notification -> one-tap install (Play-Store-like) [TODO]
+## Phase B — Flutter store app (store-app/)  [lists reminder + cards, driven by apps.json]
+### B1 — scaffold Flutter project + pubspec [BUILT-AWAITING-VERIFY]
+### B2 — theme/tokens + light/dark ThemeData mirroring web [BUILT-AWAITING-VERIFY]
+### B3 — models: AppEntry, ReleaseInfo, InstallStatus [BUILT-AWAITING-VERIFY]
+### B4 — data: catalog repository (apps.json + releases.json) [BUILT-AWAITING-VERIFY]
+### B5 — widgets: buddy tile, glow bg, glass card, gradient button, install button, top bar, app card [BUILT-AWAITING-VERIFY]
+### B6 — screens: catalog, detail (mirror web layout) [BUILT-AWAITING-VERIFY]
+### B7 — services: installed-version lookup + Install/Update/Open state [BUILT-AWAITING-VERIFY]
+### B8 — services: APK download + system installer intent (Kotlin channel + FileProvider) [BUILT-AWAITING-VERIFY]
+### B9 — self-update: store checks its OWN Releases, offers one-tap update [BUILT-AWAITING-VERIFY]
+### B10 — android manifest: permissions, queries, FileProvider [BUILT-AWAITING-VERIFY]
+### B11 — flutter analyze (clean) + build apk --debug (OK) + 3 unit tests pass [BUILT-AWAITING-VERIFY]
+### B12 — background WorkManager check -> "update available" notification -> one-tap install [BUILT-AWAITING-VERIFY]
+
+## Phase E — Feedback (GitHub Issues, no backend; app-store repo inbox; both surfaces)
+### E1 — Flutter: FeedbackLinks service (prefilled issue) + FeedbackCard, in detail + catalog [BUILT-AWAITING-VERIFY]
+### E2 — Website: feedbackUrl/feedbackRowHTML + sections on index.html & app.html + CSS [BUILT-AWAITING-VERIFY]
+### E3 — url_launcher https query added to AndroidManifest [BUILT-AWAITING-VERIFY]
+# Note: no star ratings (needs a DB/Firebase) -- deferred by decision.
+# Decision: NOT unifying into one Flutter web+Android base -- app's core (install/
+# update/notifications) can't run on web, and Flutter web would downgrade the site.
+# Shared layer is the DATA (apps.json + releases.json), consumed by both.
 
 ## Phase D — Deferred (needs user confirmation)
-### D1 — create pnsjy-store repo + publish store APK to Releases [BLOCKED-AWAITING-REPO-NAME]
+### D1 — create store repo + publish store APK to Releases [BLOCKED-AWAITING-REPO-NAME]

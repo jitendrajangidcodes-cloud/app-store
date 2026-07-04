@@ -38,8 +38,9 @@ dependencies:
   shared_preferences: ^2.3.2
   google_fonts: ^6.2.1
   flutter_local_notifications: ^18.0.1
-  workmanager: ^0.5.2
+  workmanager: ^0.9.0
   pub_semver: ^2.1.4
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,16 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+# Store launcher icon uses the PNSJY company mark.
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/brand/pnsjy-mark.png"
+  adaptive_icon_background: "#0C0E15"
+  adaptive_icon_foreground: "assets/brand/pnsjy-mark.png"
+  min_sdk_android: 26
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
