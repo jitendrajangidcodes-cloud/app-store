@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-04T09:37:54.061Z",
+  "generatedAt": "2026-07-04T11:10:03.560Z",
   "apps": {
     "reminder": {
-      "version": "2.18.23",
+      "version": "2.18.24",
       "versionCode": null,
-      "notes": "Release v2.18.23\n\nFixes the Google sign-in popup showing on almost every app open. Android now uses a standards-based OAuth flow that stores a long-lived session after you sign in once (like WhatsApp), instead of repeatedly asking Android's Credential Manager to re-confirm your account on every cold start -- that repeated re-confirmation is exactly what was causing the small \"Signing in with...\" card at the bottom of the screen. You'll need to sign in one more time after this update (via your browser this time, not the old picker) -- after that, it should not ask again.\n",
+      "notes": "Fix: Google sign-in was completely broken (Error 400: invalid_request) since v2.18.23's AppAuth migration -- Google no longer supports custom-scheme OAuth redirects for Android. Reverted to the google_sign_in/Credential Manager flow.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 68667855
+      "sizeBytes": 68546326
     },
     "cards": {
       "version": "2.4.2",
