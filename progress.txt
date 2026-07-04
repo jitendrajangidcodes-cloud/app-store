@@ -59,6 +59,13 @@
 ### J3 — show company logo prominently in app (top bar + hero) [VERIFIED on emulator]
 ### J4 — non-blocking load: catalog renders before self-update GitHub call [VERIFIED on emulator]
 
+## Phase L — In-app management + refresh UX
+### L1 — pull-to-refresh no longer tears UI down to a spinner [VERIFIED on emulator]
+### L2 — uninstall button on installed apps [VERIFIED on emulator: shows for Reminder, not Cards]
+### L3 — downloaded APK cleaned from cache (launch + on resume) [BUILT-AWAITING-VERIFY]
+### L4 — update-notification path exists (WorkManager 6h); timeliness needs Phase K [PARTIAL]
+### L5 — store self-update prompt dialog + banner [BUILT-AWAITING-VERIFY: needs newer store release to trigger]
+
 ## Phase K — Update freshness (TODO, follow-up; not blocking APK test)
 # FINDING: live releases.json lagged real releases (manifest 2.18.22 vs actual
 # 2.18.23) because the manifest workflow only triggers on app-store pushes + 6h

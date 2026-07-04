@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../data/catalog_repository.dart';
 import '../models/app_entry.dart';
 import '../models/install_status.dart';
+import '../services/downloader.dart';
 import '../services/installer.dart';
 import '../services/update_service.dart';
 import '../theme/app_theme.dart';
@@ -45,7 +46,10 @@ class _DetailScreenState extends State<DetailScreen> with WidgetsBindingObserver
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) _refresh();
+    if (state == AppLifecycleState.resumed) {
+      Downloader().cleanupApks();
+      _refresh();
+    }
   }
 
   Future<void> _refresh() async {
@@ -164,9 +168,26 @@ class _DetailScreenState extends State<DetailScreen> with WidgetsBindingObserver
                 accent: !app.requiresAccount),
           ]),
           const SizedBox(height: 18),
-          if (_status != null)
+          if (_status != null) ...[
             InstallButton(app: app, status: _status!, fontSize: 16),
+            if (_status!.installed.isInstalled) ...[
+              const SizedBox(height: 12),
+              _uninstallButton(context, app.packageId),
+            ],
+          ],
         ],
+      ),
+    );
+  }
+
+  Widget _uninstallButton(BuildContext context, String packageId) {
+    return TextButton.icon(
+      onPressed: () => Installer().uninstall(packageId),
+      icon: const Icon(Icons.delete_outline_rounded, size: 18),
+      label: const Text("Uninstall"),
+      style: TextButton.styleFrom(
+        foregroundColor: const Color(0xFFd73a4a),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       ),
     );
   }

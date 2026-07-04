@@ -23,6 +23,7 @@ class MainActivity : FlutterActivity() {
                     "installedInfo" -> result.success(installedInfo(call.argument("packageId")))
                     "canInstall" -> result.success(canInstall())
                     "openApp" -> result.success(openApp(call.argument("packageId")))
+                    "uninstallApp" -> result.success(uninstallApp(call.argument("packageId")))
                     "installApk" -> result.success(installApk(call.argument("path")))
                     else -> result.notImplemented()
                 }
@@ -49,6 +50,14 @@ class MainActivity : FlutterActivity() {
     private fun openApp(packageId: String?): Boolean {
         if (packageId == null) return false
         val intent = packageManager.getLaunchIntentForPackage(packageId) ?: return false
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        return true
+    }
+
+    private fun uninstallApp(packageId: String?): Boolean {
+        if (packageId == null) return false
+        val intent = Intent(Intent.ACTION_DELETE, Uri.parse("package:$packageId"))
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         return true

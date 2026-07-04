@@ -31,6 +31,7 @@ class _CatalogScreenState extends State<CatalogScreen>
   Catalog? _catalog;
   Map<String, AppStatus> _statuses = {};
   ReleaseInfo? _selfUpdate;
+  bool _selfUpdatePrompted = false;
   String? _error;
   bool _loading = true;
 
@@ -51,14 +52,17 @@ class _CatalogScreenState extends State<CatalogScreen>
   // installed/updated app flips to Open without a manual refresh.
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed && _catalog != null) _refreshStatuses();
+    if (state == AppLifecycleState.resumed && _catalog != null) {
+      Downloader().cleanupApks();
+      _refreshStatuses();
+    }
   }
 
   Future<void> _load() async {
-    setState(() {
-      _loading = true;
-      _error = null;
-    });
+    // Full-screen spinner only on the first load; a pull-to-refresh keeps the
+    // current catalog on screen (RefreshIndicator shows its own arc) so it does
+    // not flash back to a blank "reloading" state.
+    if (_catalog == null) setState(() => _loading = true);
     try {
       final catalog = await _repo.load();
       final statuses = await _updates.statusForAll(catalog);
@@ -67,22 +71,53 @@ class _CatalogScreenState extends State<CatalogScreen>
         _catalog = catalog;
         _statuses = statuses;
         _loading = false;
+        _error = null;
       });
-      // Self-update hits the GitHub API; run it after the catalog is on screen
-      // so a slow network never blocks the first render.
       _checkSelfUpdate();
     } catch (e) {
       if (!mounted) return;
+      // Keep whatever is already shown on a refresh failure; only surface the
+      // error screen when there is nothing to show yet.
       setState(() {
-        _error = "$e";
         _loading = false;
+        if (_catalog == null) _error = "$e";
       });
     }
   }
 
   Future<void> _checkSelfUpdate() async {
     final self = await SelfUpdate().check();
-    if (mounted && self != null) setState(() => _selfUpdate = self);
+    if (!mounted || self == null) return;
+    setState(() => _selfUpdate = self);
+    if (!_selfUpdatePrompted) {
+      _selfUpdatePrompted = true;
+      _promptStoreUpdate(self);
+    }
+  }
+
+  Future<void> _promptStoreUpdate(ReleaseInfo release) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Store update available"),
+        content: Text(
+            "A new version of PNSJY Store (v${release.version}) is ready. Update now?"),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text("Later")),
+          FilledButton(onPressed: () => Navigator.pop(ctx, true), child: const Text("Update")),
+        ],
+      ),
+    );
+    if (ok == true) await _updateStore(release);
+  }
+
+  Future<void> _updateStore(ReleaseInfo release) async {
+    if (release.apkUrl == null) return;
+    try {
+      final file = await Downloader()
+          .download(release.apkUrl!, "pnsjy-store-${release.version}.apk");
+      await Installer().installApk(file.path);
+    } catch (_) {}
   }
 
   Future<void> _refreshStatuses() async {

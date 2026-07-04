@@ -33,4 +33,23 @@ class Downloader {
     await sink.close();
     return file;
   }
+
+  // Deletes downloaded APKs once they are no longer needed (install finished or
+  // cancelled). Safe to call on launch and whenever we return to the app -- the
+  // installer has already read the file by then.
+  Future<void> cleanupApks() async {
+    try {
+      final dirs = await getExternalCacheDirectories();
+      final base = (dirs != null && dirs.isNotEmpty)
+          ? dirs.first
+          : await getTemporaryDirectory();
+      for (final f in base.listSync()) {
+        if (f is File && f.path.toLowerCase().endsWith(".apk")) {
+          try {
+            f.deleteSync();
+          } catch (_) {}
+        }
+      }
+    } catch (_) {}
+  }
 }

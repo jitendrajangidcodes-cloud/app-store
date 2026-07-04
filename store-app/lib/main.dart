@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'services/background.dart';
+import 'services/downloader.dart';
 import 'services/notifications.dart';
 import 'screens/catalog_screen.dart';
 import 'theme/app_theme.dart';
@@ -11,6 +12,7 @@ Future<void> main() async {
   final theme = ThemeController();
   await theme.load();
   await Notifications.init();
+  Downloader().cleanupApks();
   // Background registration is best-effort; a failure here must not block the UI.
   try {
     await Background.register();

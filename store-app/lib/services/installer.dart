@@ -24,6 +24,10 @@ class Installer {
   Future<bool> openApp(String packageId) async =>
       await _channel.invokeMethod<bool>("openApp", {"packageId": packageId}) ?? false;
 
+  // Launches the system uninstall dialog; the OS confirms and performs it.
+  Future<bool> uninstall(String packageId) async =>
+      await _channel.invokeMethod<bool>("uninstallApp", {"packageId": packageId}) ?? false;
+
   // Hands the downloaded file to the system installer. The OS shows its own
   // confirm dialog -- the store cannot and does not bypass it.
   Future<bool> installApk(String path) async =>
