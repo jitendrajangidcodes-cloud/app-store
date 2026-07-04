@@ -34,6 +34,9 @@ class AppIcon extends StatelessWidget {
             Image.network(
               resolveAsset(app.icon!),
               fit: BoxFit.cover,
+              // Keep the decoded icon on screen across rebuilds (e.g. a pull-to-
+              // refresh) so it never blanks back to the fallback and flashes.
+              gaplessPlayback: true,
               errorBuilder: (_, _, _) => const SizedBox.shrink(),
               frameBuilder: (_, child, frame, wasSync) =>
                   frame == null && !wasSync ? const SizedBox.shrink() : child,

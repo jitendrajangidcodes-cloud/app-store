@@ -23,3 +23,8 @@
 - Manifest + APKs same-repo -> refreshed in one CI run, 30-min cron [BUILT-AWAITING-VERIFY]
 - Web, store app, and self-update all read from the one hub repo [BUILT-AWAITING-VERIFY]
 - No cross-repo token; app build repos untouched; keystore stays gitignored [VERIFIED]
+
+## Store UX
+- Store self-update shows live download progress + errors (not a dead tap) [BUILT-AWAITING-VERIFY]
+- Single merged brand header on the store home (no duplicate logo block) [BUILT-AWAITING-VERIFY]
+- Pull-to-refresh updates in place, no web-reload flash (gapless images) [BUILT-AWAITING-VERIFY]

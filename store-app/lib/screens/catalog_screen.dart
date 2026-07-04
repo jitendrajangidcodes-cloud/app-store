@@ -108,16 +108,54 @@ class _CatalogScreenState extends State<CatalogScreen>
         ],
       ),
     );
-    if (ok == true) await _updateStore(release);
+    if (ok == true) await _downloadAndInstallStore(release);
   }
 
-  Future<void> _updateStore(ReleaseInfo release) async {
-    if (release.apkUrl == null) return;
+  // Shared store-update flow for both the prompt and the banner: shows a live
+  // download progress dialog (a 50 MB APK takes seconds, so silent tap looked
+  // dead) and surfaces failures instead of swallowing them.
+  Future<void> _downloadAndInstallStore(ReleaseInfo release) async {
+    if (release.apkUrl == null || !mounted) return;
+    final progress = ValueNotifier<double>(0);
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => AlertDialog(
+        title: const Text("Updating store"),
+        content: ValueListenableBuilder<double>(
+          valueListenable: progress,
+          builder: (_, p, _) => Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: LinearProgressIndicator(
+                    value: p > 0 ? p : null, minHeight: 8),
+              ),
+              const SizedBox(height: 14),
+              Text(p > 0 ? "Downloading ${(p * 100).round()}%" : "Starting…"),
+            ],
+          ),
+        ),
+      ),
+    );
     try {
-      final file = await Downloader()
-          .download(release.apkUrl!, "pnsjy-store-${release.version}.apk");
+      final file = await Downloader().download(
+        release.apkUrl!,
+        "pnsjy-store-${release.version}.apk",
+        onProgress: (p) => progress.value = p,
+      );
+      if (mounted) Navigator.of(context, rootNavigator: true).pop();
       await Installer().installApk(file.path);
-    } catch (_) {}
+    } catch (e) {
+      if (mounted) {
+        Navigator.of(context, rootNavigator: true).pop();
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Store update failed: $e")));
+      }
+    } finally {
+      progress.dispose();
+    }
   }
 
   Future<void> _refreshStatuses() async {
@@ -171,22 +209,6 @@ class _CatalogScreenState extends State<CatalogScreen>
       children: [
         TopBar(onToggleTheme: widget.onToggleTheme),
         const SizedBox(height: 28),
-        Row(
-          children: [
-            const BrandLogo(size: 60),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("PNSJY Store", style: sora(20, weight: FontWeight.w800, color: t.text)),
-                  Text("apps by Jitendra", style: dmSans(13, color: t.muted)),
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 22),
         Text("Apps I've built,", style: sora(30, weight: FontWeight.w800, color: t.text)),
         ShaderMask(
           shaderCallback: (r) => const LinearGradient(
@@ -202,7 +224,10 @@ class _CatalogScreenState extends State<CatalogScreen>
         ),
         const SizedBox(height: 20),
         if (_selfUpdate != null) ...[
-          _SelfUpdateBanner(release: _selfUpdate!, onDone: _refreshStatuses),
+          _SelfUpdateBanner(
+            release: _selfUpdate!,
+            onUpdate: () => _downloadAndInstallStore(_selfUpdate!),
+          ),
           const SizedBox(height: 16),
         ],
         Row(
@@ -218,6 +243,7 @@ class _CatalogScreenState extends State<CatalogScreen>
         const SizedBox(height: 16),
         for (final app in apps)
           Padding(
+            key: ValueKey(app.id),
             padding: const EdgeInsets.only(bottom: 16),
             child: AppCard(
               app: app,
@@ -243,16 +269,8 @@ class _CatalogScreenState extends State<CatalogScreen>
 
 class _SelfUpdateBanner extends StatelessWidget {
   final ReleaseInfo release;
-  final VoidCallback onDone;
-  const _SelfUpdateBanner({required this.release, required this.onDone});
-
-  Future<void> _update(BuildContext context) async {
-    try {
-      final file = await Downloader()
-          .download(release.apkUrl!, "pnsjy-store-${release.version}.apk");
-      await Installer().installApk(file.path);
-    } catch (_) {}
-  }
+  final VoidCallback onUpdate;
+  const _SelfUpdateBanner({required this.release, required this.onUpdate});
 
   @override
   Widget build(BuildContext context) {
@@ -276,7 +294,7 @@ class _SelfUpdateBanner extends StatelessWidget {
             label: "Update",
             fontSize: 13,
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-            onTap: () => _update(context),
+            onTap: onUpdate,
           ),
         ],
       ),

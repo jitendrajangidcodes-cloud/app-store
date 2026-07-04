@@ -205,6 +205,7 @@ class _DetailScreenState extends State<DetailScreen> with WidgetsBindingObserver
             resolveAsset(app.screenshots[i].src),
             width: 210,
             fit: BoxFit.cover,
+            gaplessPlayback: true,
             errorBuilder: (_, _, _) => const SizedBox(width: 210),
           ),
         ),

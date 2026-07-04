@@ -85,6 +85,17 @@
 ### M7 — regenerate releases.json from hub; flutter analyze; verify URLs 200 [BUILT-AWAITING-VERIFY]
 #  analyze clean; all 3 hub apk URLs return 200; tag names resolve to versions.
 
+## Phase N — Store UX fixes on top of the hub (store 1.0.2/1.0.3)
+### N1 — store self-update showed NO progress on tap (looked dead); now a live
+#  progress dialog + error surfacing, shared by the prompt and the banner [BUILT-AWAITING-VERIFY]
+### N2 — merged the duplicate brand header (removed the second logo + "apps by
+#  Jitendra" block; TopBar is the single brand mark) [BUILT-AWAITING-VERIFY]
+### N3 — pull-to-refresh "reload like a webpage": network icons/screenshots now
+#  gaplessPlayback + AppCard ValueKey, so refresh updates in place, no flash [BUILT-AWAITING-VERIFY]
+### N4 — docs updated to the hub model (README, store-app/README, AGENTS.md,
+#  features.md); security re-audited: no secrets tracked or in source [BUILT-AWAITING-VERIFY]
+# Store shipped: hub tag store=1.0.3+4; bridge pnsjy-store v1.0.3+4.
+
 ## Phase K — Update freshness (SUPERSEDED by Phase M single-repo hub)
 # FINDING: live releases.json lagged real releases (manifest 2.18.22 vs actual
 # 2.18.23) because the manifest workflow only triggers on app-store pushes + 6h
