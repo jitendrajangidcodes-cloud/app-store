@@ -83,7 +83,7 @@
 
   <section class="stats-strip">
     <div class="stat-tile"><span class="big">Direct APK</span><span class="small">no store, no middleman</span></div>
-    <div class="stat-tile"><span class="big">0 accounts</span><span class="small">download and install, done</span></div>
+    <div class="stat-tile"><span class="big" id="stat-accounts">…</span><span class="small" id="stat-accounts-sub">checking apps…</span></div>
     <div class="stat-tile"><span class="big">Auto-versioned</span><span class="small">synced with GitHub Releases</span></div>
   </section>
 
@@ -112,6 +112,17 @@
   const apps = await loadApps();
   countEl.textContent = `${apps.length} published`;
 
+  // Real, computed from each app's actual data -- not a fixed marketing
+  // claim, since it isn't true of every app (Reminder requires Google
+  // Sign-In to sync; Cards genuinely has none).
+  const accountFreeCount = apps.filter((a) => !a.requiresAccount).length;
+  document.getElementById("stat-accounts").textContent =
+    accountFreeCount === apps.length ? "0 accounts" : `${accountFreeCount}/${apps.length} apps`;
+  document.getElementById("stat-accounts-sub").textContent =
+    accountFreeCount === apps.length
+      ? "download and install, done"
+      : "need zero account to use";
+
   for (const app of apps) {
     const card = document.createElement("a");
     card.className = "app-card";
@@ -127,6 +138,9 @@
       <div class="badge-row">
         <span class="pill-download" data-version-badge>Get APK</span>
         <span class="meta">${app.category} · Android 8+</span>
+      </div>
+      <div class="badge-row">
+        <span class="chip-static ${app.requiresAccount ? "plain" : "accent"}">${app.requiresAccount ? "Requires Google sign-in" : "No account needed"}</span>
       </div>
     `;
     grid.appendChild(card);
