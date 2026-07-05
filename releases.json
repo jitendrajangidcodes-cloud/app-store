@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-05T12:20:43.687Z",
+  "generatedAt": "2026-07-05T12:35:03.714Z",
   "apps": {
     "reminder": {
-      "version": "2.18.26",
+      "version": "2.18.27",
       "versionCode": null,
-      "notes": "Release v2.18.26\n\nGoogle Maps share links that only carry a place ID (Share > Copy link on a named business/place, rather than a dropped pin) now resolve automatically: an invisible WebView loads the link the same way a browser would, letting Google's own JS resolve the coordinates, instead of failing silently. Progress while pasting a location now shows a proper animated status (reading clipboard -> opening link -> looking up the place -> finding the address) instead of a bare spinner.\n",
+      "notes": "Release v2.18.27\n\nA one-time \"what's new\" prompt now explains the location-based reminders feature after updating, with a clear skip option (dismissible by button or tapping outside) for anyone who'd rather not read it.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 69825778
+      "sizeBytes": 69858618
     },
     "cards": {
       "version": "2.4.2",
