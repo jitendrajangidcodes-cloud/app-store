@@ -22,6 +22,10 @@ class MainActivity : FlutterActivity() {
                 when (call.method) {
                     "installedInfo" -> result.success(installedInfo(call.argument("packageId")))
                     "canInstall" -> result.success(canInstall())
+                    "openInstallPermissionSettings" -> {
+                        openInstallPermissionSettings()
+                        result.success(null)
+                    }
                     "openApp" -> result.success(openApp(call.argument("packageId")))
                     "uninstallApp" -> result.success(uninstallApp(call.argument("packageId")))
                     "installApk" -> result.success(installApk(call.argument("path")))
@@ -45,6 +49,18 @@ class MainActivity : FlutterActivity() {
     private fun canInstall(): Boolean {
         return if (android.os.Build.VERSION.SDK_INT >= 26) packageManager.canRequestPackageInstalls()
         else true
+    }
+
+    // Lands the user on this app's own "install unknown apps" toggle (not a
+    // generic settings list), matching the same pattern used by every other
+    // app in this family's own update-checker (see e.g. Cards'/AI Scanner's
+    // UpdateChecker.kt).
+    private fun openInstallPermissionSettings() {
+        val intent = Intent(android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
+            data = Uri.parse("package:$packageName")
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        startActivity(intent)
     }
 
     private fun openApp(packageId: String?): Boolean {

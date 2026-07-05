@@ -21,6 +21,10 @@ class Installer {
   Future<bool> canInstall() async =>
       await _channel.invokeMethod<bool>("canInstall") ?? false;
 
+  // Lands the user on this app's own "install unknown apps" toggle.
+  Future<void> openInstallPermissionSettings() async =>
+      await _channel.invokeMethod<void>("openInstallPermissionSettings");
+
   Future<bool> openApp(String packageId) async =>
       await _channel.invokeMethod<bool>("openApp", {"packageId": packageId}) ?? false;
 

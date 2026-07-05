@@ -1,10 +1,15 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../models/app_entry.dart';
 import '../models/install_status.dart';
 import '../services/downloader.dart';
 import '../services/installer.dart';
+import '../services/log_service.dart';
 import '../theme/app_theme.dart';
 import 'gradient_button.dart';
+import 'info_gate_sheet.dart';
 
 // Renders one app's action from its AppStatus and drives the download+install
 // flow. Install/Update download the APK (with a progress bar) then hand it to
@@ -24,32 +29,74 @@ class InstallButton extends StatefulWidget {
   State<InstallButton> createState() => _InstallButtonState();
 }
 
-class _InstallButtonState extends State<InstallButton> {
+class _InstallButtonState extends State<InstallButton> with WidgetsBindingObserver {
   final _installer = Installer();
   final _downloader = Downloader();
   bool _busy = false;
   double _progress = 0;
+  String? _error;
+  bool _needsPermission = false;
+  File? _downloadedFile;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  // Coming back from the "install unknown apps" settings screen: the file is
+  // already downloaded, so just retry the install handoff -- never re-download.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed && _needsPermission && _downloadedFile != null) {
+      unawaited(_tryInstall(_downloadedFile!));
+    }
+  }
+
+  Future<void> _tryInstall(File file) async {
+    if (!await _installer.canInstall()) {
+      if (mounted) setState(() { _needsPermission = true; _downloadedFile = file; });
+      return;
+    }
+    if (mounted) setState(() { _needsPermission = false; _downloadedFile = null; });
+    await _installer.installApk(file.path);
+  }
 
   Future<void> _installOrUpdate() async {
     final latest = widget.status.latest;
     if (latest?.apkUrl == null || _busy) return;
+
+    if (!await LogService().hasSubmittedInfo()) {
+      if (!mounted) return;
+      final submitted = await InfoGateSheet.show(context);
+      if (!submitted) return;
+    }
+    unawaited(LogService().logDownload(widget.app.id));
+
     setState(() {
       _busy = true;
       _progress = 0;
+      _error = null;
+      _needsPermission = false;
     });
     try {
       final file = await _downloader.download(
         latest!.apkUrl!,
         "${widget.app.id}-${latest.version}.apk",
-        onProgress: (p) => setState(() => _progress = p),
+        onProgress: (p) => mounted ? setState(() => _progress = p) : null,
       );
-      await _installer.installApk(file.path);
+      await _tryInstall(file);
     } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Download failed: $e")),
-        );
-      }
+      // The partial file stays on disk (see Downloader) -- retrying resumes
+      // instead of starting over, which matters for a Wi-Fi/mobile-data
+      // switch or a dropped connection mid-download, not just a hard failure.
+      if (mounted) setState(() => _error = "Download interrupted");
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -58,6 +105,14 @@ class _InstallButtonState extends State<InstallButton> {
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
+    if (_needsPermission) {
+      return _PermissionPrompt(
+        onOpenSettings: () => unawaited(_installer.openInstallPermissionSettings()),
+      );
+    }
+    if (_error != null) {
+      return _RetryPill(message: _error!, onRetry: _installOrUpdate, color: t.accent);
+    }
     if (_busy) {
       return _ProgressPill(progress: _progress, color: t.accent, track: t.glass2);
     }
@@ -147,6 +202,67 @@ class _ProgressPill extends StatelessWidget {
             progress > 0 ? "Downloading ${(progress * 100).round()}%" : "Starting…",
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+// Shown when the APK finished downloading but Android's "install unknown
+// apps" permission isn't granted yet for this store -- without this,
+// firing the install intent blindly gets silently blocked by the OS with
+// its own warning screen instead of the real install prompt ever appearing.
+class _PermissionPrompt extends StatelessWidget {
+  final VoidCallback onOpenSettings;
+  const _PermissionPrompt({required this.onOpenSettings});
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: onOpenSettings,
+      style: OutlinedButton.styleFrom(
+        foregroundColor: Colors.white,
+        side: const BorderSide(color: Colors.white70),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.settings_outlined, size: 18),
+          SizedBox(width: 8),
+          Flexible(child: Text("Allow installs — tap to open Settings", overflow: TextOverflow.ellipsis)),
+        ],
+      ),
+    );
+  }
+}
+
+// A dropped connection (Wi-Fi/mobile data switch, signal loss) lands here
+// instead of a transient toast -- retrying resumes from the partial file
+// (see Downloader) rather than starting the whole download over.
+class _RetryPill extends StatelessWidget {
+  final String message;
+  final VoidCallback onRetry;
+  final Color color;
+  const _RetryPill({required this.message, required this.onRetry, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: onRetry,
+      style: OutlinedButton.styleFrom(
+        foregroundColor: color,
+        side: BorderSide(color: color),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.refresh_rounded, size: 18),
+          const SizedBox(width: 8),
+          Flexible(child: Text("$message — Retry", overflow: TextOverflow.ellipsis)),
         ],
       ),
     );

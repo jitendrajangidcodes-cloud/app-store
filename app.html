@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 <script>
 (async function () {
   document.getElementById("nav-mark").innerHTML = pnsjyLogoHTML(30);
@@ -148,6 +148,7 @@
     a.className = "download-btn";
     a.href = latest.downloadUrl;
     a.textContent = `⬇ Download APK · v${latest.version}`;
+    a.addEventListener("click", (e) => gateDownload(e, app.id, latest.downloadUrl));
     downloadBtn.replaceWith(a);
 
     const historyList = history.length ? history : [manifestLatest];

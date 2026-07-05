@@ -6,6 +6,96 @@ const THEME_EXPLICIT_KEY = "theme-explicit";
 // getRelease() below.
 const HUB_REPO = "jitendrajangidcodes-cloud/app-store";
 
+// ── Download info-gate + logging ─────────────────────────────────────────
+// Scoped to this site's download buttons only -- the apps themselves (AI
+// Scanner, Cards, Reminder) each separately promise "no analytics" and are
+// untouched. See scripts/download-log/ for the Apps Script + setup this
+// posts to; a failed/unconfigured log never blocks the actual download.
+const DOWNLOAD_LOG_URL = "REPLACE_WITH_YOUR_APPS_SCRIPT_EXEC_URL";
+const DL_NAME_KEY = "dl_name";
+const DL_EMAIL_KEY = "dl_email";
+
+function hasSubmittedInfo() {
+  return !!localStorage.getItem(DL_NAME_KEY);
+}
+
+function saveInfo(name, email) {
+  localStorage.setItem(DL_NAME_KEY, name);
+  if (email) localStorage.setItem(DL_EMAIL_KEY, email);
+}
+
+function logDownload(appId) {
+  if (DOWNLOAD_LOG_URL.startsWith("REPLACE_WITH")) return;
+  try {
+    const body = JSON.stringify({
+      app: appId,
+      platform: "web",
+      name: localStorage.getItem(DL_NAME_KEY) || "",
+      email: localStorage.getItem(DL_EMAIL_KEY) || "",
+      userAgent: navigator.userAgent,
+      screen: `${screen.width}x${screen.height}`,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language: navigator.language,
+    });
+    // no-cors: Apps Script's response is a cross-origin redirect we can't
+    // read anyway -- this is fire-and-forget, we only need the row appended.
+    fetch(DOWNLOAD_LOG_URL, { method: "POST", mode: "no-cors", body });
+  } catch (e) {
+    // Best-effort -- never let logging failure affect the actual download.
+  }
+}
+
+// Shows the one-time info modal (name required, email optional). Resolves
+// true once submitted; the modal has no dismiss/skip affordance by design.
+function showInfoGate() {
+  return new Promise((resolve) => {
+    const backdrop = document.createElement("div");
+    backdrop.className = "info-gate-backdrop";
+    backdrop.innerHTML = `
+      <div class="info-gate-card">
+        <h3>Before you download</h3>
+        <p>We ask for your name (and optionally email) once, so we know who's
+           using these apps. Basic browser/device info is recorded alongside
+           it. This applies to downloads from this site only.</p>
+        <input type="text" id="info-gate-name" placeholder="Name" autocomplete="name" />
+        <input type="email" id="info-gate-email" placeholder="Email (optional)" autocomplete="email" />
+        <div class="info-gate-error" id="info-gate-error">Name is required</div>
+        <button id="info-gate-submit">Continue</button>
+      </div>
+    `;
+    document.body.appendChild(backdrop);
+
+    const nameInput = backdrop.querySelector("#info-gate-name");
+    const emailInput = backdrop.querySelector("#info-gate-email");
+    const errorEl = backdrop.querySelector("#info-gate-error");
+    const submitBtn = backdrop.querySelector("#info-gate-submit");
+    nameInput.focus();
+
+    submitBtn.addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      if (!name) {
+        errorEl.style.display = "block";
+        return;
+      }
+      saveInfo(name, emailInput.value.trim());
+      backdrop.remove();
+      resolve(true);
+    });
+  });
+}
+
+// Intercepts a download link's click: gates on first use, then navigates to
+// [url] and logs the download. Attach with:
+//   el.addEventListener("click", (e) => gateDownload(e, appId, url));
+async function gateDownload(event, appId, url) {
+  event.preventDefault();
+  if (!hasSubmittedInfo()) {
+    await showInfoGate();
+  }
+  logDownload(appId);
+  window.location.href = url;
+}
+
 function currentTheme() {
   return document.documentElement.getAttribute("data-theme") || "dark";
 }

@@ -1217,3 +1217,76 @@ button:focus-visible {
     display: none;
   }
 }
+
+/* Info-gate modal: shown once per browser before the first download, to
+   collect basic info (see script.js showInfoGate). Deliberately simple,
+   matches the site's existing glass/blur aesthetic. */
+.info-gate-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+.info-gate-card {
+  background: var(--panel-solid);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  box-shadow: var(--shadow-strong);
+  max-width: 380px;
+  width: 100%;
+  padding: 26px;
+}
+.info-gate-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: var(--text);
+}
+.info-gate-card p {
+  margin: 0 0 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.info-gate-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border2);
+  background: var(--glass);
+  color: var(--text);
+  font-size: 14px;
+}
+.info-gate-card input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.info-gate-card .info-gate-error {
+  color: #e35a5a;
+  font-size: 12.5px;
+  margin: -4px 0 10px;
+  display: none;
+}
+.info-gate-card button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.info-gate-card button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

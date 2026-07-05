@@ -129,7 +129,7 @@
   </footer>
 </div>
 
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 <script>
 (async function () {
   document.getElementById("nav-mark").innerHTML = pnsjyLogoHTML(30);
@@ -142,6 +142,7 @@
       btn.textContent = `⬇ Download Store APK · v${rel.version.split("+")[0]}`;
       btn.href = rel.downloadUrl;
       btn.removeAttribute("aria-disabled");
+      btn.addEventListener("click", (e) => gateDownload(e, "store", rel.downloadUrl));
       meta.textContent = `${formatSize(rel.sizeBytes)} · Android 8+ · direct APK`;
     } else {
       btn.textContent = "Store APK unavailable";
