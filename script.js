@@ -1,6 +1,11 @@
 const THEME_KEY = "theme";
 const THEME_EXPLICIT_KEY = "theme-explicit";
 
+// This hub repo -- apps published directly here (apps.json `repo` field
+// equals this) need tag-specific release lookups, never "latest". See
+// getRelease() below.
+const HUB_REPO = "jitendrajangidcodes-cloud/app-store";
+
 function currentTheme() {
   return document.documentElement.getAttribute("data-theme") || "dark";
 }
@@ -123,6 +128,15 @@ function loadManifest() {
 
 // Prefer the manifest; fall back to the live API per app if it is missing or
 // stale. Returns the same shape as fetchLatestRelease (downloadUrl, not apkUrl).
+//
+// Apps published directly to this hub (apps.json `repo` === HUB_REPO, e.g.
+// ai-scanner) MUST fall back to a tag-specific lookup, never
+// fetchLatestRelease -- the hub holds multiple apps' releases under
+// different tags, so "latest" resolves to whichever app released most
+// recently, not this one. This mirrors the same fix already applied to
+// scripts/sync-releases.sh; missing it here left the site briefly showing
+// another app's version (or none) for any hub-direct app whenever
+// releases.json was momentarily stale/uncached.
 async function getRelease(app) {
   const manifest = await loadManifest();
   const m = manifest && manifest.apps ? manifest.apps[app.id] : null;
@@ -134,6 +148,9 @@ async function getRelease(app) {
       downloadUrl: m.apkUrl,
       sizeBytes: m.sizeBytes || null,
     };
+  }
+  if (app.repo === HUB_REPO) {
+    return fetchReleaseByTag(app.repo, app.id);
   }
   return fetchLatestRelease(app.repo);
 }
