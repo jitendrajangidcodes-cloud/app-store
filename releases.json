@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-05T07:30:52.504Z",
+  "generatedAt": "2026-07-05T09:23:14.304Z",
   "apps": {
     "reminder": {
-      "version": "2.18.24",
+      "version": "2.18.25",
       "versionCode": null,
-      "notes": "Fix: Google sign-in was completely broken (Error 400: invalid_request) since v2.18.23's AppAuth migration -- Google no longer supports custom-scheme OAuth redirects for Android. Reverted to the google_sign_in/Credential Manager flow.\n",
+      "notes": "Release v2.18.25\n\nLocation-based reminders (geofence trigger): pick a location by opening Google Maps and pasting the coordinates back (no Maps Platform API/billing needed), set a free-form radius, choose arrival / departure / both as the trigger. Behaves identically to time-based reminders once fired -- same ringing, snooze, and one-shot completion pipeline.\n\nAlso fixes a background-sync crash (SyncWorker missing getForegroundInfo override on expedited WorkManager requests).\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 68546326
+      "sizeBytes": 69202865
     },
     "cards": {
       "version": "2.4.2",
