@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<paths>
-    <!-- Downloaded APKs live in the app's external cache; shared read-only with
-         the system installer via FileProvider. -->
-    <external-cache-path name="apk_cache" path="."/>
-    <cache-path name="internal_cache" path="."/>
-</paths>

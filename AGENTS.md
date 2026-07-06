@@ -11,8 +11,9 @@ and updates the listed apps.
 - `releases.json` — generated in CI; latest version + hub APK url per app. Do not hand-edit.
 - `scripts/sync-releases.sh` — mirrors each app's latest source APK into THIS repo's Releases.
 - `scripts/build-manifest.mjs` — regenerates `releases.json` from THIS repo's hub Releases.
-- `store-app/` — Flutter Android store app. Fetches apps.json + releases.json from the
-  live site and installs/updates apps via the system installer.
+- Store app source now lives in separate repos: `app-store-android-private` (real signing
+  key committed) and `app-store-android-pub` (sanitized public mirror). This repo only
+  hosts the website + release hub; it no longer contains `store-app/`.
 
 ## Single-repo hub (how releases flow)
 - This repo is the ONE public hub. Every APK — `reminder`, `cards`, `ai-scanner`, and the store
