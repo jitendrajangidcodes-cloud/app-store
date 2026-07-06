@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T07:43:07.847Z",
+  "generatedAt": "2026-07-06T07:53:31.435Z",
   "apps": {
     "reminder": {
       "version": "2.18.27",
@@ -18,12 +18,12 @@
       "sizeBytes": 122720982
     },
     "ai-scanner": {
-      "version": "1.0.5",
-      "versionCode": 6,
-      "notes": "Adds tap-to-act chips on Item Detail (Open in Maps, Call, Add to Calendar, Open link) generated from addresses/phone numbers/dates/urls the app already extracts from your screenshots. Also adds a bold BETA badge inside the app itself, next to the title, so the pre-release status is obvious without checking the download page.",
+      "version": "1.0.6",
+      "versionCode": 7,
+      "notes": "Fixes the update-checker and model-download URLs after the app-store hub repo was renamed (app-store -> app-store-web). No user-facing feature change.",
       "publishedAt": "2026-07-05T09:51:29Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/ai-scanner/app-release.apk",
-      "sizeBytes": 218119352
+      "sizeBytes": 218119356
     }
   }
 }
