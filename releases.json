@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T09:02:11.903Z",
+  "generatedAt": "2026-07-06T10:35:05.173Z",
   "apps": {
     "reminder": {
       "version": "2.18.27",
@@ -18,12 +18,12 @@
       "sizeBytes": 122720982
     },
     "ai-scanner": {
-      "version": "1.0.6",
-      "versionCode": 7,
-      "notes": "Fixes the update-checker and model-download URLs after the app-store hub repo was renamed (app-store -> app-store-web). No user-facing feature change.",
+      "version": "1.0.7",
+      "versionCode": 8,
+      "notes": "Adds Collections (Settings -> Collections): screenshots that are semantically similar get grouped automatically using the same on-device embeddings already computed for search -- no manual tagging. Also fixes a real bug where a missing manifest permission could cause repeated permission-dialog flashing on some devices.",
       "publishedAt": "2026-07-05T09:51:29Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/ai-scanner/app-release.apk",
-      "sizeBytes": 218119356
+      "sizeBytes": 218152216
     }
   }
 }
