@@ -1,6 +1,6 @@
 # Releases (hub itself)
 
-This file tracks changes to the `app-store` hub repo itself (the website,
+This file tracks changes to the `app-store-web` hub repo itself (the website,
 `apps.json`/`releases.json`, and the release-distribution scripts) -- not any
 individual app's APK releases. Each listed app has its own `RELEASE.md` in its
 own repo for that.
@@ -18,4 +18,4 @@ patterns in `AGENTS.md`.
 Added AI Scanner (`ai-scanner`) as the first app using this pattern, listed
 under category "Beta" (pre-release).
 
-- Hub: https://github.com/jitendrajangidcodes-cloud/app-store
+- Hub: https://github.com/jitendrajangidcodes-cloud/app-store-web

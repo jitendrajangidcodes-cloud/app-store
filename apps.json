@@ -43,7 +43,7 @@
     "color": "#4527A0",
     "requiresAccount": false,
     "icon": "assets/icons/ai-scanner.png",
-    "repo": "jitendrajangidcodes-cloud/app-store",
+    "repo": "jitendrajangidcodes-cloud/app-store-web",
     "packageId": "com.jitendrajangid.ai_scanner",
     "about": "AI Scanner automatically finds new screenshots on your phone, extracts their text with on-device OCR, and writes an on-device AI summary for each one -- so you can later search by meaning (\"headache medicine\") and not just literal words. You can also share links into it, which get captured and summarized the same way. Every model runs entirely on-device (Gemma 3 1B for summaries, Gecko for search embeddings) -- there is no cloud, no account, and no analytics. This is an early pre-release: expect rough edges.",
     "requirements": "Android 8.0 (Oreo) or newer. Distributed outside the Play Store -- Android will ask permission to install from this source the first time. Large download (~950MB) -- the on-device AI models are bundled in the app so it works fully offline after install.",

@@ -8,7 +8,7 @@ set -euo pipefail
 
 here="$(cd "$(dirname "$0")" && pwd)"
 apps_json="$here/../apps.json"
-HUB="${HUB_REPO:-jitendrajangidcodes-cloud/app-store}"
+HUB="${HUB_REPO:-jitendrajangidcodes-cloud/app-store-web}"
 
 hub_version() {
   gh api "repos/$HUB/releases/tags/$1" 2>/dev/null | jq -r '.name // ""' || true

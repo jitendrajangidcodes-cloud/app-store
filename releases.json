@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-06T06:55:27.970Z",
+  "generatedAt": "2026-07-06T07:42:40.544Z",
   "apps": {
     "reminder": {
       "version": "2.18.27",
       "versionCode": null,
       "notes": "Release v2.18.27\n\nA one-time \"what's new\" prompt now explains the location-based reminders feature after updating, with a clear skip option (dismissible by button or tapping outside) for anyone who'd rather not read it.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store/releases/download/reminder/reminder_app.apk",
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
       "sizeBytes": 69858618
     },
     "cards": {
@@ -14,16 +14,16 @@
       "versionCode": null,
       "notes": "Release v2.4.2\n",
       "publishedAt": "2026-07-04T09:29:52Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store/releases/download/cards/Cards-v2.4.2.apk",
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/cards/Cards-v2.4.2.apk",
       "sizeBytes": 122720982
     },
     "ai-scanner": {
-      "version": "1.0.4",
-      "versionCode": 5,
-      "notes": "Adds a duplicate-photo finder (Settings -> Find Duplicates): finds screenshots that are 100% byte-for-byte identical and lets you actually delete the extra copy to reclaim storage, not just remove it from the app's list. Only exact matches count -- no fuzzy/perceptual similarity. Deletion goes through Android's own system confirmation dialog; if you decline, nothing is touched.",
+      "version": "1.0.5",
+      "versionCode": 6,
+      "notes": "Adds tap-to-act chips on Item Detail (Open in Maps, Call, Add to Calendar, Open link) generated from addresses/phone numbers/dates/urls the app already extracts from your screenshots. Also adds a bold BETA badge inside the app itself, next to the title, so the pre-release status is obvious without checking the download page.",
       "publishedAt": "2026-07-05T09:51:29Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store/releases/download/ai-scanner/app-release.apk",
-      "sizeBytes": 218118948
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/ai-scanner/app-release.apk",
+      "sizeBytes": 218119352
     }
   }
 }

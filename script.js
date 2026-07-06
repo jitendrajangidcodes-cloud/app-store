@@ -4,7 +4,7 @@ const THEME_EXPLICIT_KEY = "theme-explicit";
 // This hub repo -- apps published directly here (apps.json `repo` field
 // equals this) need tag-specific release lookups, never "latest". See
 // getRelease() below.
-const HUB_REPO = "jitendrajangidcodes-cloud/app-store";
+const HUB_REPO = "jitendrajangidcodes-cloud/app-store-web";
 
 // ── Download info-gate + logging ─────────────────────────────────────────
 // Scoped to this site's download buttons only -- the apps themselves (AI
@@ -304,12 +304,12 @@ function appIconHTML(app, size) {
 // Feedback opens a prefilled GitHub issue on the app-store repo -- no backend,
 // no account data, GitHub handles identity and spam. Mirrors the store app's
 // FeedbackLinks so both surfaces file into the same inbox with the same labels.
-const FEEDBACK_REPO = "jitendrajangidcodes-cloud/app-store";
+const FEEDBACK_REPO = "jitendrajangidcodes-cloud/app-store-web";
 
 // Every APK lives in this hub repo. The store app's own build sits under the
 // stable "store" tag; the "Get the Store app" banner pulls its live version/
 // size/download straight from that release.
-const STORE_REPO = "jitendrajangidcodes-cloud/app-store";
+const STORE_REPO = "jitendrajangidcodes-cloud/app-store-web";
 const STORE_TAG = "store";
 
 function feedbackUrl(type, app) {
