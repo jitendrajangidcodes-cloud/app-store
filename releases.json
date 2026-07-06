@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-06T19:56:31.084Z",
+  "generatedAt": "2026-07-06T20:56:51.318Z",
   "apps": {
     "reminder": {
-      "version": "2.18.28",
+      "version": "2.18.29",
       "versionCode": null,
-      "notes": "Release v2.18.28\n\nLocation-reminder picker now works entirely in-app: tap \"Pick location\" to open an embedded Google Maps view, tap/long-press to drop a pin, and the app captures the coordinates automatically -- no more switching to the Maps app and pasting a copied pin back in.\n\n",
+      "notes": "Release v2.18.29\n\nFixes the in-app map picker (introduced in v2.18.28) getting stuck on a blank screen if the embedded Google Maps page fails to load -- it now shows the actual error and a Retry button instead of silently doing nothing.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.18.28.apk",
-      "sizeBytes": 69743862
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.18.29.apk",
+      "sizeBytes": 69825918
     },
     "cards": {
       "version": "2.4.2",
