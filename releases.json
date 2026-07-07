@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-07T10:04:49.127Z",
+  "generatedAt": "2026-07-07T10:26:21.162Z",
   "apps": {
     "reminder": {
-      "version": "2.18.31",
+      "version": "2.18.32",
       "versionCode": null,
-      "notes": "Release v2.18.31\n\nFixes the map picker auto-picking the map's default center within a second or two of opening, before you touched anything. It no longer auto-captures anything -- drop the pin yourself, then tap the new \"Use this location\" button when you're ready.\n\n",
+      "notes": "Release v2.18.32\n\nReplaces the in-app map picker's Google Maps view with OpenStreetMap -- Google's mobile web build kept redirecting the embedded browser to a link it couldn't load. Pan the map until the center pin marks your spot, then tap \"Use this location\".\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.18.31.apk",
-      "sizeBytes": 69825914
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.18.32.apk",
+      "sizeBytes": 69842298
     },
     "cards": {
       "version": "2.4.2",
