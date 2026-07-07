@@ -52,15 +52,15 @@
   {
     "id": "twinclean",
     "name": "TwinClean",
-    "tagline": "Beta: finds exact duplicate files and lets you clean them safely.",
-    "category": "Beta",
+    "tagline": "Finds exact duplicate files and lets you clean them safely.",
+    "category": "Utilities",
     "platform": "Android",
     "color": "#FFC400",
     "requiresAccount": false,
     "icon": "assets/icons/twinclean.png",
     "repo": "jitendrajangidcodes-cloud/app-store-web",
     "packageId": "com.pnsjy.twinclean",
-    "about": "TwinClean scans your device for exact duplicate files across photos, videos, audio and documents, grouping every match so you can review before cleaning. Every match is verified with a full SHA-256 checksum over the whole file -- identical content is the only thing that matches, never \"similar looking\" -- and Smart Select keeps the newest, best copy by default. Cleaning moves files to an in-app Trash (restorable for 30 days), never deletes originals outright. There is no cloud, no account, and no analytics. This is an early beta: expect rough edges.",
+    "about": "TwinClean scans your device for exact duplicate files across photos, videos, audio and documents, grouping every match so you can review before cleaning. Every match is verified with a full SHA-256 checksum over the whole file -- identical content is the only thing that matches, never \"similar looking\" -- and Smart Select keeps the newest, best copy by default. Every file can be opened directly from the app to double-check before cleaning, and each duplicate group shows the exact evidence used to match it (size, checksum, byte-for-byte comparison). Cleaning moves files to an in-app Trash (restorable for 30 days) with single-file, whole-group, or restore-everything options, never deletes originals outright. There is no cloud, no account, and no analytics.",
     "requirements": "Android 8.0 (Oreo) or newer. Distributed outside the Play Store -- Android will ask permission to install from this source the first time.",
     "screenshots": []
   }
