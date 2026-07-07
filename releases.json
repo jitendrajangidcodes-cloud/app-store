@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-07T16:45:16.498Z",
+  "generatedAt": "2026-07-07T17:16:58.532Z",
   "apps": {
     "reminder": {
-      "version": "2.18.33",
+      "version": "2.19.0",
       "versionCode": null,
-      "notes": "Release v2.18.33\n\nThe map picker now opens already centered on your current location instead of OpenStreetMap's default view -- OSM's own in-page \"locate me\" button can't work inside an embedded WebView, so the app fetches your position itself (same GPS lookup the geofence feature already uses) before opening the map.\n\n",
+      "notes": "Release v2.19.0\n\nReliability fixes for alarms and updates:\n- Reminders now ring quieter during a phone call (still full volume over videos/music).\n- Lock-screen alarms are sticky: they stay up until you pick Complete, Dismiss, or Snooze, instead of sometimes collapsing into a notification banner.\n- The in-app updater no longer gets stuck or lost if you minimize the app mid-download -- it holds the download alive and re-syncs progress when you return.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.18.33.apk",
-      "sizeBytes": 69842298
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.0.apk",
+      "sizeBytes": 69858686
     },
     "cards": {
       "version": "2.4.2",
