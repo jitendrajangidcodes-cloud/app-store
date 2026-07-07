@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-07T03:47:54.116Z",
+  "generatedAt": "2026-07-07T04:33:41.138Z",
   "apps": {
     "reminder": {
-      "version": "2.18.29",
+      "version": "2.18.30",
       "versionCode": null,
-      "notes": "Release v2.18.29\n\nFixes the in-app map picker (introduced in v2.18.28) getting stuck on a blank screen if the embedded Google Maps page fails to load -- it now shows the actual error and a Retry button instead of silently doing nothing.\n\n",
+      "notes": "Release v2.18.30\n\nFixes the in-app map picker actually failing to load at all: Google's mobile Maps page detects an embedded WebView and redirects to an intent:// link meant to open the native Maps app, which a WebView can't follow (net::ERR_UNKNOWN_URL_SCHEME). The picker now presents as a desktop browser, which Google never redirects this way.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.18.29.apk",
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.18.30.apk",
       "sizeBytes": 69825918
     },
     "cards": {
