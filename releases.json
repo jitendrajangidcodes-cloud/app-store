@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-08T13:07:23.381Z",
+  "generatedAt": "2026-07-08T15:42:59.967Z",
   "apps": {
     "reminder": {
-      "version": "2.19.1",
+      "version": "2.19.2",
       "versionCode": null,
-      "notes": "Release v2.19.1\n\n- Google sign-in no longer nags: the Drive permission card no longer reappears every day or on every manual sync -- an existing grant is now reused silently.\n- Backup storage is tidier: the Sheet backup lives in a clearly named per-app folder, and the app adopts an existing backup instead of ever creating duplicates.\n",
+      "notes": "Fix: lock-screen alarms no longer collapse into a notification banner after a second.\n\nThe full-screen alarm now stays put over the lock screen (like the standard alarm-clock apps) so you can Snooze or Dismiss it directly, without it dropping to a banner that you have to tap to reopen. Root cause was the app asking the lock screen to dismiss itself on secure (PIN/pattern/fingerprint) locks, which pushed the alarm to the background.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.1.apk",
-      "sizeBytes": 69858686
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
+      "sizeBytes": 69858678
     },
     "cards": {
       "version": "2.4.2",
