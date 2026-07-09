@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T04:32:09.370Z",
+  "generatedAt": "2026-07-09T07:13:04.547Z",
   "apps": {
     "reminder": {
       "version": "2.19.2",
@@ -26,12 +26,12 @@
       "sizeBytes": 218611132
     },
     "twinclean": {
-      "version": "1.2.0",
-      "versionCode": 3,
-      "notes": "Adds an in-app updater: TwinClean now checks for new versions on launch and installs updates directly, no browser or store needed. Since this is the first build with the updater, install it once manually -- future updates will prompt automatically inside the app.",
+      "version": "1.3.0",
+      "versionCode": 4,
+      "notes": "Adds an optional Google Drive duplicate finder: sign in with Google to find and clean exact duplicates in your own Google Drive, matched on Drive's checksum (or name+type for native Google Docs, clearly flagged as unverified). Deletes move to Google Drive's own Trash -- recoverable there, never a permanent delete. Available per-group and in bulk. Your account is never required for the core on-device duplicate finder.",
       "publishedAt": "2026-07-07T10:01:03Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/twinclean/twinclean-v1.2.0%2B3.apk",
-      "sizeBytes": 58875992
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/twinclean/twinclean-v1.3.0%2B4.apk",
+      "sizeBytes": 60057144
     }
   }
 }
