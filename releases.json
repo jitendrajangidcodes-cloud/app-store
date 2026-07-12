@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-12T06:37:24.629Z",
+  "generatedAt": "2026-07-12T09:05:52.482Z",
   "apps": {
     "reminder": {
-      "version": "2.19.5",
+      "version": "2.19.6",
       "versionCode": null,
-      "notes": "- Fix: the reminder alarm now shows its notification and full-screen lock-screen alert again. A change in v2.19.3 could leave the alarm ringing with nothing on screen; this reverts it.\n",
+      "notes": "Release v2.19.6\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 69875198
+      "sizeBytes": 70437918
     },
     "cards": {
       "version": "2.4.2",
