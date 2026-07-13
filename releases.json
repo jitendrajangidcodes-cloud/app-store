@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-13T11:16:24.216Z",
+  "generatedAt": "2026-07-13T13:40:26.331Z",
   "apps": {
     "reminder": {
-      "version": "2.19.8",
+      "version": "2.19.9",
       "versionCode": null,
-      "notes": "Release v2.19.8\n",
+      "notes": "Fixes location reminders that could silently fail.\n\n- Location reminders now reliably prompt for \"Allow all the time\" background access (geofences can't fire without it) instead of quietly doing nothing.\n- The app no longer saves a location reminder that can't arm -- it guides you to grant the permission first, with an inline banner and an Open settings shortcut.\n- Settings > Test location reminder now gives clear feedback on every outcome instead of appearing to do nothing.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app-v2.19.8.apk",
-      "sizeBytes": 69908222
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
+      "sizeBytes": 69974026
     },
     "cards": {
       "version": "2.4.2",
