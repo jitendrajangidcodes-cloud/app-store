@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-14T10:18:04.575Z",
+  "generatedAt": "2026-07-14T11:56:04.962Z",
   "apps": {
     "reminder": {
-      "version": "2.19.10",
+      "version": "2.19.12",
       "versionCode": null,
-      "notes": "Fixes location reminders that armed but never rang.\n\n- Location reminders now report the real result of registering the geofence with Google Play services instead of assuming success -- if it can't arm (e.g. device Location off or not set to High accuracy), the app tells you the exact reason instead of going silent.\n- The geofence is now primed with a fresh high-accuracy fix at registration, so it can fire for a stationary device instead of waiting for movement.\n- Settings > Test location reminder now uses a 150m radius (a sub-100m geofence is too small for Play services to reliably detect) and notifies you if it fails to arm.\n- Editor warns clearly if a saved location reminder's geofence could not register.\n",
+      "notes": "Fixes location reminders not firing at all.\n\n- Root cause found: on Android 12+ the geofence was rejected by Google Play services (DEVELOPER_ERROR) because its pending-intent was created immutable. Android 12+ requires a mutable pending-intent so Play services can deliver the location transition. Location reminders (and the Settings > Test location reminder) now actually register and fire.\n- Builds on v2.19.10/2.19.11: the app now also reports the real reason if a geofence still can't register, primes a fresh GPS fix so it fires for a stationary device, and uses a 150m test radius.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 69990410
+      "sizeBytes": 69990414
     },
     "cards": {
       "version": "2.4.2",
