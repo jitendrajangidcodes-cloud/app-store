@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-14T17:18:20.589Z",
+  "generatedAt": "2026-07-14T18:40:40.355Z",
   "apps": {
     "reminder": {
-      "version": "2.19.15",
+      "version": "2.19.17",
       "versionCode": null,
-      "notes": "Fixes the alarm actions.\n\n- Snooze, Complete and Dismiss now work on the lock-screen alarm again. The dedicated alarm screen introduced in v2.19.14 wasn't wired to the alarm engine, so its buttons did nothing -- now fixed. The alarm still stays reliably over the lock screen.\n",
+      "notes": "Smarter permission setup for every phone.\n\n- The app now asks for and opens exactly the right permission page for your phone's brand and Android version -- exact-alarm and full-screen settings only on the versions that have them, plus the correct per-brand background/autostart screen (Samsung, Xiaomi, Oppo, Vivo, OnePlus, Huawei).\n- Notification status is now detected correctly on all Android versions.\n- Adds the 'Appear on top' permission that keeps the full-screen alarm reliable on Samsung/Xiaomi.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 70006998
+      "sizeBytes": 70007030
     },
     "cards": {
       "version": "2.4.2",
