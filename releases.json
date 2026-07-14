@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-14T08:13:40.975Z",
+  "generatedAt": "2026-07-14T10:18:04.575Z",
   "apps": {
     "reminder": {
-      "version": "2.19.9",
+      "version": "2.19.10",
       "versionCode": null,
-      "notes": "Fixes location reminders that could silently fail.\n\n- Location reminders now reliably prompt for \"Allow all the time\" background access (geofences can't fire without it) instead of quietly doing nothing.\n- The app no longer saves a location reminder that can't arm -- it guides you to grant the permission first, with an inline banner and an Open settings shortcut.\n- Settings > Test location reminder now gives clear feedback on every outcome instead of appearing to do nothing.\n",
+      "notes": "Fixes location reminders that armed but never rang.\n\n- Location reminders now report the real result of registering the geofence with Google Play services instead of assuming success -- if it can't arm (e.g. device Location off or not set to High accuracy), the app tells you the exact reason instead of going silent.\n- The geofence is now primed with a fresh high-accuracy fix at registration, so it can fire for a stationary device instead of waiting for movement.\n- Settings > Test location reminder now uses a 150m radius (a sub-100m geofence is too small for Play services to reliably detect) and notifies you if it fails to arm.\n- Editor warns clearly if a saved location reminder's geofence could not register.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 69974026
+      "sizeBytes": 69990410
     },
     "cards": {
       "version": "2.4.2",
