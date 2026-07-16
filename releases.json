@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-16T16:19:50.891Z",
+  "generatedAt": "2026-07-16T17:47:02.189Z",
   "apps": {
     "reminder": {
-      "version": "2.19.20",
+      "version": "2.19.21",
       "versionCode": null,
-      "notes": "Fixes the lock-screen alarm rendering a duplicate screen. Snooze and Dismiss now work on the first tap — previously a second alarm screen opened behind the overlay, so the first tap hit the duplicate. Tapping the alarm notification no longer launches a second alarm surface.\n",
+      "notes": "Rebuilds the lock-screen alarm on a single, reliable mechanism (full-screen-intent notification + dedicated Activity, matching Google's own Clock app) instead of the SYSTEM_ALERT_WINDOW overlay, which was silently failing to render on some phones (confirmed on Vivo/OriginOS). Notification action buttons now show real text (Done / Snooze / Dismiss) instead of emoji. The app also now catches a full-screen-alarm permission that gets revoked after setup and re-prompts, instead of silently breaking alarms.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.20.apk",
-      "sizeBytes": 70010546
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.21.apk",
+      "sizeBytes": 70008406
     },
     "cards": {
       "version": "2.4.2",
