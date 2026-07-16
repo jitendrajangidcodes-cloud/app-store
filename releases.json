@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-16T17:47:02.189Z",
+  "generatedAt": "2026-07-16T19:17:53.615Z",
   "apps": {
     "reminder": {
-      "version": "2.19.21",
+      "version": "2.19.23",
       "versionCode": null,
-      "notes": "Rebuilds the lock-screen alarm on a single, reliable mechanism (full-screen-intent notification + dedicated Activity, matching Google's own Clock app) instead of the SYSTEM_ALERT_WINDOW overlay, which was silently failing to render on some phones (confirmed on Vivo/OriginOS). Notification action buttons now show real text (Done / Snooze / Dismiss) instead of emoji. The app also now catches a full-screen-alarm permission that gets revoked after setup and re-prompts, instead of silently breaking alarms.\n",
+      "notes": "Visual refresh: the home screen's header is now a flat, softly accent-tinted card with a subtle glow instead of a purple/pink gradient, the accent color shifted to a warmer terracotta, the add-reminder button is now a rounded square, and the List/Categories toggle's selected state is clearer.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.21.apk",
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.23.apk",
       "sizeBytes": 70008406
     },
     "cards": {
