@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T12:27:56.535Z",
+  "generatedAt": "2026-07-17T12:43:06.992Z",
   "apps": {
     "reminder": {
       "version": "2.19.28",
@@ -26,12 +26,12 @@
       "sizeBytes": 218611132
     },
     "mirrordrive": {
-      "version": "0.11.2",
-      "versionCode": 23,
-      "notes": "# MirrorDrive v0.11.2 — Fixes the repeated login prompt\n\n### Features\n- Dashboard storage card and task-screen usage line now show MirrorDrive's own synced data\n  (files/mappings it actually synced) instead of your whole Google Drive account's usage.\n\n### Bug fixes\n- Root-cause fix for the app asking to log in / showing a Google account card every time it\n  was opened: the storage card was silently calling Drive's account-quota API on every screen\n  load, which is what triggered it. Nothing in the app touches Drive automatically anymore --\n  only actions you actually take (Sync now, folder picker, backup/restore, duplicate delete)\n  can ever prompt.\n",
+      "version": "0.12.0",
+      "versionCode": 24,
+      "notes": "# MirrorDrive 0.12.0\n\n### Features\n- Editing a mapping can now rename the actual Google Drive folder, not just re-pick one. The Drive-folder row in the edit sheet has a rename action that renames the live folder and updates the mapping name to match.\n- Restyled mapping cards on the home screen: a status dot on each folder (green healthy, amber paused, red last-run-failed) and a live progress bar while a sync is running.\n- The per-mapping screen now shows only the Files and History tabs. The old header card is gone; the mapping name, live status, and Sync now button moved into the top bar.\n- The Files tab is now a clean folder tree with a search box (finds files by name across the whole mapping) and a sort control (Name, Size, or Recent). The grid view was removed.\n\n### Bug fixes\n- No user-facing bug fixes in this release.\n",
       "publishedAt": "2026-07-17T11:09:43Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/mirrordrive/mirrordrive.apk",
-      "sizeBytes": 106824346
+      "sizeBytes": 106726098
     },
     "twinclean": {
       "version": "1.3.1",
