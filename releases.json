@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-17T04:42:50.155Z",
+  "generatedAt": "2026-07-17T07:20:12.187Z",
   "apps": {
     "reminder": {
-      "version": "2.19.23",
+      "version": "2.19.26",
       "versionCode": null,
-      "notes": "Visual refresh: the home screen's header is now a flat, softly accent-tinted card with a subtle glow instead of a purple/pink gradient, the accent color shifted to a warmer terracotta, the add-reminder button is now a rounded square, and the List/Categories toggle's selected state is clearer.\n",
+      "notes": "Switched from the custom monospace theme to the system default font. Made tab headers and the bottom nav bar more prominent: page titles are now pinned (no longer scroll away) with a distinct surface and border, pushed-screen headers (Done/Disabled/History/Sync/Editor) match, and the active tab now shows a clear highlight pill instead of just a color change.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.23.apk",
-      "sizeBytes": 70008406
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
+      "sizeBytes": 69818634
     },
     "cards": {
       "version": "2.4.2",
