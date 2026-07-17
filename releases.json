@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-17T15:09:56.655Z",
+  "generatedAt": "2026-07-17T15:39:12.650Z",
   "apps": {
     "reminder": {
-      "version": "2.19.31",
+      "version": "2.19.32",
       "versionCode": null,
-      "notes": "Fix power-button snooze not working\n\n### Features\n\nNo new features in this release.\n\n### Bug fixes\n\n- Fixed the power button not snoozing a ringing alarm on some devices (introduced in v2.19.29,\n  reported not working in v2.19.30). Verified on-device this time: the alarm now stops ringing,\n  the screen stays off, and it correctly reschedules for the configured snooze duration.\n\n",
+      "notes": "New app icon and alarm screen colors follow the app theme\n\n### Features\n\n- New app icon: a checklist notepad with a green checkmark on a green gradient, replacing the\n  previous calendar icon on blue. Matches the app's own accent color.\n- The alarm ring screen's Dismiss button and loading-state color now use the app's green theme\n  accent instead of a hardcoded red.\n\n### Bug fixes\n\nNo user-facing bug fixes in this release.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.31.apk",
-      "sizeBytes": 69819370
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.32.apk",
+      "sizeBytes": 69650490
     },
     "cards": {
       "version": "2.4.2",
