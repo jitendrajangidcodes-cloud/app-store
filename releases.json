@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-17T12:43:06.992Z",
+  "generatedAt": "2026-07-17T13:20:20.273Z",
   "apps": {
     "reminder": {
-      "version": "2.19.28",
+      "version": "2.19.29",
       "versionCode": null,
-      "notes": "Fixed the bottom nav bar: the add button used to float above the row while the other icons sat inline, looking misaligned -- now all five buttons (today/upcoming/add/categories/settings) share one baseline and span the full width evenly. Inactive tab icons are more visible now. Also cleaned up the Upcoming/Categories/Settings page titles (dropped the trailing slash styling).\n",
+      "notes": "Alarm ring screen redesign and power-button snooze\n\n### Features\n\n- Power button now snoozes a ringing alarm. Pressing power while the alarm is showing on the lock\n  screen snoozes it for the duration set in Settings > auto-snooze, instead of only blanking the\n  screen while the alarm keeps ringing. The alarm no longer re-lights the screen afterwards.\n- The alarm ring screen controls were re-ordered by how often each action is actually wanted. The\n  snooze duration stepper is now the snooze button itself: tap the centre to snooze, use minus and\n  plus to adjust. It sits with the other controls instead of floating in the middle of the screen\n  away from the button it drove.\n- Complete is now the full-width primary button, and Dismiss is a quieter outlined row beneath it,\n  so dismissing an occurrence no longer visually outranks completing it.\n- The empty vertical gap between the clock and the buttons is gone; the clock, category and title\n  now centre in the space above the controls.\n\n### Bug fixes\n\nNo user-facing bug fixes in this release.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 69819446
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.29.apk",
+      "sizeBytes": 69819370
     },
     "cards": {
       "version": "2.4.2",
@@ -26,12 +26,12 @@
       "sizeBytes": 218611132
     },
     "mirrordrive": {
-      "version": "0.12.0",
-      "versionCode": 24,
-      "notes": "# MirrorDrive 0.12.0\n\n### Features\n- Editing a mapping can now rename the actual Google Drive folder, not just re-pick one. The Drive-folder row in the edit sheet has a rename action that renames the live folder and updates the mapping name to match.\n- Restyled mapping cards on the home screen: a status dot on each folder (green healthy, amber paused, red last-run-failed) and a live progress bar while a sync is running.\n- The per-mapping screen now shows only the Files and History tabs. The old header card is gone; the mapping name, live status, and Sync now button moved into the top bar.\n- The Files tab is now a clean folder tree with a search box (finds files by name across the whole mapping) and a sort control (Name, Size, or Recent). The grid view was removed.\n\n### Bug fixes\n- No user-facing bug fixes in this release.\n",
+      "version": "0.13.0",
+      "versionCode": 25,
+      "notes": "# MirrorDrive 0.13.0\n\n### Features\n- The file list now shows what is playing: the track the audio player currently has loaded is highlighted with a Playing/Paused label, and the per-mapping screen now shows the mini-player bar so you can see and control playback without leaving it.\n- You can now delete a synced file directly from the file list: swipe a file row left and confirm. It removes the file from this device and moves the Drive copy to Trash (recoverable for about 30 days).\n\n### Bug fixes\n- Playing a file no longer leaves you with no indication of what is playing or where to control it.\n- The app previously had no in-app way to delete an individual synced file; now it does.\n",
       "publishedAt": "2026-07-17T11:09:43Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/mirrordrive/mirrordrive.apk",
-      "sizeBytes": 106726098
+      "sizeBytes": 106726242
     },
     "twinclean": {
       "version": "1.3.1",
