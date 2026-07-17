@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-17T14:46:09.079Z",
+  "generatedAt": "2026-07-17T15:09:56.655Z",
   "apps": {
     "reminder": {
-      "version": "2.19.30",
+      "version": "2.19.31",
       "versionCode": null,
-      "notes": "Fix unreachable install button on the update screen\n\n### Features\n\n- The What's New notes on the update screen now scroll, and Download & install is always visible.\n\n### Bug fixes\n\n- Fixed the update screen becoming unusable when release notes were long: the install button was\n  pushed off the bottom of the screen with no way to scroll to it.\n- Release notes now render as clean bullets instead of showing raw markdown headings.\n\n",
+      "notes": "Fix power-button snooze not working\n\n### Features\n\nNo new features in this release.\n\n### Bug fixes\n\n- Fixed the power button not snoozing a ringing alarm on some devices (introduced in v2.19.29,\n  reported not working in v2.19.30). Verified on-device this time: the alarm now stops ringing,\n  the screen stays off, and it correctly reschedules for the configured snooze duration.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.30.apk",
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.31.apk",
       "sizeBytes": 69819370
     },
     "cards": {
