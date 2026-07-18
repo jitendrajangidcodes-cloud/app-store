@@ -83,5 +83,21 @@
     "about": "TwinClean scans your device for exact duplicate files across photos, videos, audio and documents, grouping every match so you can review before cleaning. Every match is verified with a full SHA-256 checksum over the whole file -- identical content is the only thing that matches, never \"similar looking\" -- and Smart Select keeps the newest, best copy by default. Every file can be opened directly from the app to double-check before cleaning, and each duplicate group shows the exact evidence used to match it (size, checksum, byte-for-byte comparison). Cleaning moves files to an in-app Trash (restorable for 30 days) with single-file, whole-group, or restore-everything options, never deletes originals outright. Sign in with Google (optional) to also find and clean exact duplicates in your own Google Drive, matched on Drive's checksum and moved to Drive's own Trash -- your account is never required for the core on-device feature. The app checks for new versions on launch and installs updates directly in-app.",
     "requirements": "Android 8.0 (Oreo) or newer. Distributed outside the Play Store -- Android will ask permission to install from this source the first time.",
     "screenshots": []
+  },
+  {
+    "id": "localsender",
+    "name": "Local Sender",
+    "tagline": "Send messages and files between your devices on the same Wi-Fi, end-to-end encrypted.",
+    "category": "Utilities",
+    "beta": true,
+    "platform": "Android",
+    "color": "#3D5AFE",
+    "requiresAccount": false,
+    "icon": "assets/icons/localsender.png",
+    "repo": "jitendrajangidcodes-cloud/app-store-web",
+    "packageId": "com.pnsjy.local_sender",
+    "about": "Local Sender lets your devices talk directly over the same Wi-Fi with no internet, cloud, or account. Discover nearby devices, pair by confirming a matching 6-digit code on both screens, then chat one-to-one or in group rooms and send any file. Everything is end-to-end encrypted with a signed X25519 handshake and AES-256-GCM, and files are checksum-verified on arrival. Conversations and paired devices are scoped per Wi-Fi network and switch automatically as you move between them.",
+    "requirements": "Android 8.0 (Oreo) or newer. Both devices must be on the same Wi-Fi network. Distributed outside the Play Store -- Android will ask permission to install from this source the first time.",
+    "screenshots": []
   }
 ]
