@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T08:24:05.587Z",
+  "generatedAt": "2026-07-18T08:52:53.776Z",
   "apps": {
     "reminder": {
       "version": "2.19.32",
@@ -16,6 +16,14 @@
       "publishedAt": "2026-07-04T09:29:52Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/cards/Cards-v2.4.2.apk",
       "sizeBytes": 122720982
+    },
+    "ai-scanner": {
+      "version": "1.2.0",
+      "versionCode": 20,
+      "notes": "# AI Scanner 1.2.0 — scan any folder you choose, clean duplicates first, export for the team\n\nYou now decide exactly where AI Scanner looks. Point it at any folder, let it clear out exact duplicates before it starts, then watch it understand each image one at a time.\n\n### Features\n\n- Choose your scan folder. Pick any folder on your device and AI Scanner scans it, including every subfolder inside it. Your choice is remembered and can be changed anytime in Settings. (Android; iPhone keeps scanning your Screenshots.)\n- Duplicate cleanup before scanning. Before the first scan of a folder, AI Scanner finds byte-for-byte identical copies and shows them grouped so you can delete the extras first. It is fully optional — review, clean up, or skip and scan anyway.\n- Scan everything once, then only what's new. The first time, every image in the folder is scanned one by one with clear progress — the current image, its name, and exactly what stage it's on — and you can stop anytime. After that, only newly added images are scanned.\n- Export for dev review. A new Settings button bundles every scanned image together with its on-device AI review into a single ZIP you can share, so the team can use it to keep improving the app.\n\n### Bug fixes\n\n- No user-facing bug fixes in this release.\n",
+      "publishedAt": "2026-07-05T09:51:29Z",
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/ai-scanner/ai-scanner.apk",
+      "sizeBytes": 219250696
     },
     "mirrordrive": {
       "version": "0.13.2",
