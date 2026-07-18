@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-18T14:00:24.074Z",
+  "generatedAt": "2026-07-18T15:29:49.028Z",
   "apps": {
     "reminder": {
-      "version": "2.19.32",
+      "version": "2.19.33",
       "versionCode": null,
-      "notes": "New app icon and alarm screen colors follow the app theme\n\n### Features\n\n- New app icon: a checklist notepad with a green checkmark on a green gradient, replacing the\n  previous calendar icon on blue. Matches the app's own accent color.\n- The alarm ring screen's Dismiss button and loading-state color now use the app's green theme\n  accent instead of a hardcoded red.\n\n### Bug fixes\n\nNo user-facing bug fixes in this release.\n\n",
+      "notes": "Fix: alarm not firing on Android 11 (Xiaomi/MIUI and other Android 11 devices). The alarm screen crashed instantly on Android 11 due to a version-specific TelephonyManager API, which silently killed the ringing, notification and sound. Android 12+ was unaffected. Now fixed for all versions.\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.32.apk",
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
       "sizeBytes": 69650490
     },
     "cards": {
