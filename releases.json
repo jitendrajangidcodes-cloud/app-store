@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T06:29:03.380Z",
+  "generatedAt": "2026-07-18T06:31:22.466Z",
   "apps": {
     "reminder": {
       "version": "2.19.32",
@@ -18,12 +18,12 @@
       "sizeBytes": 122720982
     },
     "ai-scanner": {
-      "version": "1.0.16",
-      "versionCode": 17,
-      "notes": "Fixes the real cause found via v1.0.15's diagnostics: declined duplicates were older library entries whose files were already gone from disk, not a permission problem. Missing files are now labeled visibly, cleaned up instead of retried, and entries with a file that still exists get a real gallery id resolved so they use the same permission-popup delete as everything else. Adds a manual Recheck button to Find Duplicates.",
+      "version": "1.1.0",
+      "versionCode": 18,
+      "notes": "# AI Scanner 1.1.0 — screenshots are now understood, not just OCR'd\n\nThis release replaces the old text-only summarizer with an on-device vision model that actually looks at each screenshot, so the notes describe what a screenshot is and the one useful thing to remember from it — instead of dumping the raw OCR text back at you.\n\n### Features\n- Vision summaries: a new on-device model (Gemma 4 E2B) reads the screenshot itself — layout, app, icons, images — and writes a short, useful note. OCR is now used only to keep exact names, prices, and codes correct.\n- Better search: because summaries are meaningful now, semantic search over them is much more relevant.\n- Opportunistic inbuilt Gemini Nano: on supported flagship devices, an on-device image caption is folded in as an extra hint. Nothing changes on other devices.\n- Fully offline and zero-cost as always: the vision model downloads once (about 2.7 GB, best on phones with 8 GB+ RAM) and everything runs on-device. No account, no cloud, no uploads.\n\n### Bug fixes\n- Fixed the core problem where summaries just echoed the OCR text and were not useful. The pipeline no longer feeds flattened OCR to a tiny text model; it looks at the actual screenshot.\n- Removed a truncation that cut long screenshots down to the first 1000 characters before summarizing.\n- The old Gemma 3 1B model is automatically removed once the new model is in place, reclaiming its storage.\n- Devices that cannot run the vision model degrade cleanly to a text summary instead of failing.\n",
       "publishedAt": "2026-07-05T09:51:29Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/ai-scanner/app-release.apk",
-      "sizeBytes": 218611132
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/ai-scanner/ai-scanner.apk",
+      "sizeBytes": 218758832
     },
     "mirrordrive": {
       "version": "0.13.2",
