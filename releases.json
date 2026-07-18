@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T11:12:50.056Z",
+  "generatedAt": "2026-07-18T11:47:37.589Z",
   "apps": {
     "reminder": {
       "version": "2.19.32",
@@ -18,12 +18,12 @@
       "sizeBytes": 122720982
     },
     "ai-scanner": {
-      "version": "1.2.1",
-      "versionCode": 21,
-      "notes": "# AI Scanner 1.2.1 — deleted photos no longer come back, plus rescan controls\n\nA folder with 20 photos was scanning as 120 when 100 \"deleted\" photos were still sitting in the trash. Fixed, plus new ways to rescan and reset.\n\n### Features\n\n- Rescan folder now. A new Settings action re-checks your folder: it picks up newly added photos and drops any you've deleted, without touching the rest.\n- Reset & rescan. Clears everything the app has scanned and scans your folder from scratch, including the duplicate check. Your photos are never touched.\n- Scan image button. The home button is now a clearly labelled \"Scan image\" — tap it to pick any single image from anywhere on your device and scan just that one.\n\n### Bug fixes\n\n- Deleted photos are no longer scanned. Photos you delete go to the trash but stay on disk for a while; the app was counting those as if they were still there (a folder of 20 could show as 120). Trashed, binned and hidden files are now ignored, so the count matches what's really in your folder.\n- Deleting a photo now removes it from the app. Entries whose photo has been deleted or trashed are cleared automatically on the next scan, so what you see always matches what's on disk.\n",
+      "version": "1.2.2",
+      "versionCode": 22,
+      "notes": "# AI Scanner 1.2.2 — scanning no longer blocks you\n\nScanning a big folder used to park you on a full-screen progress page until every image was done. Now the app stays usable the whole time.\n\n### Features\n\n- Scan without waiting. The home list is usable the moment scanning starts — scroll, search, and open items while the rest process in the background.\n- Items appear as they finish. Each image drops into your list the moment it's understood, instead of all at once at the end.\n- Live scan banner. A small banner shows the current image, \"Scanning 12 of 340\", the current step, a progress bar, and a Stop button.\n- Stop and resume. Stop anytime; whatever's left is simply picked up the next time you scan — no restarting from zero.\n\n### Bug fixes\n\n- The app no longer feels frozen while scanning a large number of images — the old blocking full-screen scan was removed.\n",
       "publishedAt": "2026-07-05T09:51:29Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/ai-scanner/ai-scanner.apk",
-      "sizeBytes": 219250784
+      "sizeBytes": 219250780
     },
     "mirrordrive": {
       "version": "0.13.2",
