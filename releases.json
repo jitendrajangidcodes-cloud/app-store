@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T13:06:49.752Z",
+  "generatedAt": "2026-07-19T13:44:23.560Z",
   "apps": {
     "reminder": {
       "version": "2.19.38",
@@ -42,12 +42,12 @@
       "sizeBytes": 60057144
     },
     "localsender": {
-      "version": "1.0.7",
-      "versionCode": 8,
-      "notes": "Local Sender 1.0.7 - offline messages, delivery and read receipts, notifications\n\nSend even when the other device is offline, see delivery and read status, and\nget notified of new messages.\n\nIMPORTANT: the message format changed so devices exchange delivery and read\nreceipts. Update every device - old and new devices still chat, but only devices\non 1.0.7 show receipts to each other.\n\n### Features\n- Send messages while the other device is offline. They are held on your device\n  and delivered automatically the moment that device is back on the Wi-Fi.\n- Delivery and read receipts: each message shows a clock (waiting), one tick\n  (sent), two ticks (delivered), or two blue ticks (read).\n- Paired devices now reconnect to each other automatically when they reappear on\n  the same Wi-Fi, so queued messages flush without opening the chat.\n- New-message notifications when you are not already looking at that chat.\n\n### Bug fixes\n- The message box no longer locks when a device is offline; you can compose and\n  queue messages any time.\n- Read status now syncs even if you read a message while briefly disconnected.\n",
+      "version": "1.0.8",
+      "versionCode": 9,
+      "notes": "Local Sender 1.0.8 - update install fixes (Mac and Android)\n\nFixes updates that downloaded but failed to install. No messaging or pairing\nchanges; pairs with 1.0.7.\n\n### Features\n- If a Mac update cannot replace the app automatically, the new version is now\n  placed in your Downloads and revealed in Finder so you can drag it into\n  Applications to finish.\n\n### Bug fixes\n- Mac updates no longer fail at the install step: system tools are now called by\n  full path, so a normally-launched app can extract and swap the update.\n- Update errors now show the real reason instead of a generic message, so a\n  failure can actually be acted on.\n- Android now tells you to allow \"Install unknown apps\" (with a Retry) when the\n  installer cannot open, instead of appearing to do nothing.\n",
       "publishedAt": "2026-07-18T19:25:33Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/localsender/localsender.apk",
-      "sizeBytes": 55254100
+      "sizeBytes": 55270484
     }
   }
 }
