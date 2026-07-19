@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T07:37:05.403Z",
+  "generatedAt": "2026-07-19T08:27:07.544Z",
   "apps": {
     "reminder": {
       "version": "2.19.38",
@@ -42,12 +42,12 @@
       "sizeBytes": 60057144
     },
     "localsender": {
-      "version": "1.0.6",
-      "versionCode": 7,
-      "notes": "Local Sender 1.0.6 - visible update progress\n\nUpdating the app now shows exactly what is happening. No messaging or pairing\nchanges; pairs with 1.0.3 and later.\n\n### Features\n- The update screen now shows a live progress bar while downloading, then\n  \"Installing\" and \"Restarting\", so you always know where the update is.\n- You can cancel a download in progress.\n\n### Bug fixes\n- Tapping Update no longer closes the window and goes silent while a large\n  download runs in the background.\n- If an update cannot be downloaded or installed, the app now tells you and\n  offers a Retry instead of appearing to do nothing.\n",
+      "version": "1.0.7",
+      "versionCode": 8,
+      "notes": "Local Sender 1.0.7 - offline messages, delivery and read receipts, notifications\n\nSend even when the other device is offline, see delivery and read status, and\nget notified of new messages.\n\nIMPORTANT: the message format changed so devices exchange delivery and read\nreceipts. Update every device - old and new devices still chat, but only devices\non 1.0.7 show receipts to each other.\n\n### Features\n- Send messages while the other device is offline. They are held on your device\n  and delivered automatically the moment that device is back on the Wi-Fi.\n- Delivery and read receipts: each message shows a clock (waiting), one tick\n  (sent), two ticks (delivered), or two blue ticks (read).\n- Paired devices now reconnect to each other automatically when they reappear on\n  the same Wi-Fi, so queued messages flush without opening the chat.\n- New-message notifications when you are not already looking at that chat.\n\n### Bug fixes\n- The message box no longer locks when a device is offline; you can compose and\n  queue messages any time.\n- Read status now syncs even if you read a message while briefly disconnected.\n",
       "publishedAt": "2026-07-18T19:25:33Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/localsender/localsender.apk",
-      "sizeBytes": 54814483
+      "sizeBytes": 55254100
     }
   }
 }
