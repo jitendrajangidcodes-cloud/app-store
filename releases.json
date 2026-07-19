@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T07:28:50.967Z",
+  "generatedAt": "2026-07-19T07:37:05.403Z",
   "apps": {
     "reminder": {
       "version": "2.19.38",
@@ -42,12 +42,12 @@
       "sizeBytes": 60057144
     },
     "localsender": {
-      "version": "1.0.5",
-      "versionCode": 6,
-      "notes": "Local Sender 1.0.5 - hardened Google Drive backup security\n\nSecurity hardening for the encrypted backup added in 1.0.4. No changes to\nmessaging or pairing; pairs with 1.0.3 and 1.0.4.\n\n### Features\n- Sign out now fully disconnects: it revokes the Google authorization at\n  Google's servers, not just on this device, so the token cannot be reused.\n\n### Bug fixes\n- The saved Google authorization is now bound to this single device and is only\n  readable after the device is first unlocked; it is never synced to iCloud\n  Keychain or copied to your other devices.\n- Confirmed nothing sensitive is ever logged, and the backup key is never\n  written to the device - it stays in your Google account's private app data.\n",
+      "version": "1.0.6",
+      "versionCode": 7,
+      "notes": "Local Sender 1.0.6 - visible update progress\n\nUpdating the app now shows exactly what is happening. No messaging or pairing\nchanges; pairs with 1.0.3 and later.\n\n### Features\n- The update screen now shows a live progress bar while downloading, then\n  \"Installing\" and \"Restarting\", so you always know where the update is.\n- You can cancel a download in progress.\n\n### Bug fixes\n- Tapping Update no longer closes the window and goes silent while a large\n  download runs in the background.\n- If an update cannot be downloaded or installed, the app now tells you and\n  offers a Retry instead of appearing to do nothing.\n",
       "publishedAt": "2026-07-18T19:25:33Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/localsender/localsender.apk",
-      "sizeBytes": 54798103
+      "sizeBytes": 54814483
     }
   }
 }
