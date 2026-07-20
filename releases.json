@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T01:05:40.324Z",
+  "generatedAt": "2026-07-20T04:52:28.430Z",
   "apps": {
     "reminder": {
       "version": "2.19.39",
@@ -10,12 +10,12 @@
       "sizeBytes": 69850693
     },
     "cards": {
-      "version": "2.4.2",
+      "version": "2.4.3",
       "versionCode": null,
-      "notes": "Release v2.4.2\n",
+      "notes": "Show the app version and PNSJY branding in Settings\n\nSettings now ends with the current app version and the PNSJY store branding, so every\nPNSJY app presents the same footer.\n\n### Features\n\n- The Settings screen now shows the installed app version and a PNSJY brand footer as its\n  last two items, consistent across all PNSJY apps.\n\n### Bug fixes\n\nNo user-facing bug fixes in this release.\n\n",
       "publishedAt": "2026-07-04T09:29:52Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/cards/Cards-v2.4.2.apk",
-      "sizeBytes": 122720982
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/cards/Cards-v2.4.3.apk",
+      "sizeBytes": 122764873
     },
     "ai-scanner": {
       "version": "1.4.0",
