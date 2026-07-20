@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-20T05:54:42.988Z",
+  "generatedAt": "2026-07-20T08:22:19.030Z",
   "apps": {
     "reminder": {
-      "version": "2.19.39",
+      "version": "2.19.40",
       "versionCode": null,
-      "notes": "Cut battery drain on the no-SIM/Wi-Fi location fallback\n\nThe location-reminder GPS fallback used when a phone has no SIM and no Wi-Fi\n(so Play Services geofencing can't run) was taking a high-accuracy GPS fix on a\nfixed timer regardless of whether the phone was actually moving -- a device\nsitting still all day still burned GPS every 20s-5min. It is now motion-gated:\nwhen every target is farther than 1.5km away it stops polling GPS entirely and\narms the hardware significant-motion sensor (near-zero power) plus a 20-minute\nsafety poll, so a stationary phone uses almost no battery until it actually\nmoves. Close to a geofence boundary it keeps tight, distance-adaptive polling\n(30/60/120s) so crossings are still caught on time.\n\n### Features\n\n- No user-facing feature changes. Adds an internal, emulator-driven screenshot\n  automation harness (integration_test + scripts/screenshots.sh) used to keep\n  the app-store hub visuals in sync; it is not part of the shipped app.\n\n### Bug fixes\n\n- Location reminders no longer drain the battery while the phone is stationary\n  with no SIM and no Wi-Fi. The GPS-polling fallback is now gated on the\n  hardware motion sensor and only polls when the device is moving or near a\n  target, instead of on a fixed high-accuracy timer.\n\n",
+      "notes": "Multi-device sync, both new switches on by default.\n\n- Live sync (Settings > Live sync): an add, edit or delete on one device now shows up on your other devices within seconds while the app is open, instead of waiting for the next open or the ~4 hour background sync.\n- Simultaneous edits on two devices no longer overwrite each other - each reminder now merges on its own, and a delete stays deleted.\n- Mirror alarm actions (Settings > Mirror alarm actions): when the same alarm rings on two devices, Complete, Dismiss or Snooze on one now stops the other within a few seconds. This existed before but almost never ran; it works now.\n- Battery-conscious: the sync check only runs while the app is on screen, downloads nothing unless something actually changed, and slows itself down when nothing is happening.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.39.apk",
-      "sizeBytes": 69850693
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
+      "sizeBytes": 70080069
     },
     "cards": {
       "version": "2.4.3",
@@ -42,12 +42,12 @@
       "sizeBytes": 60317239
     },
     "localsender": {
-      "version": "1.0.10",
-      "versionCode": 11,
-      "notes": "Show the app version and PNSJY branding in Settings\n\nSettings now ends with the current app version and the PNSJY store branding, so every\nPNSJY app presents the same footer.\n\n### Features\n\n- The Settings screen now shows the installed app version and a PNSJY brand footer as its\n  last two items, consistent across all PNSJY apps.\n\n### Bug fixes\n\nNo user-facing bug fixes in this release.\n",
+      "version": "1.0.11",
+      "versionCode": 12,
+      "notes": "Local Sender 1.0.11 - security hardening (full audit)\n\nA full security audit (see AUDIT.md and THREAT_MODEL.md in the repo) and fixes for\nevery CRITICAL and HIGH finding it turned up. All local content is now encrypted\nat rest, the macOS build is sandboxed again, and Drive backup no longer stores its\nown key next to the data it protects.\n\n### Features\n- Google Drive backup is now sealed with a passphrase you set and never upload —\n  Drive alone can no longer read a backup, only you can.\n- A warning dialog when a device presents a different identity key than the one\n  already trusted under that name, instead of an ordinary pairing prompt.\n\n### Bug fixes\n- Chat history, rooms, trusted-peer keys, peer profiles, network profiles, and\n  device name are now encrypted at rest (previously plaintext in local storage).\n- Fixed a path-traversal bug where an incoming file offer's name could write\n  outside the downloads folder.\n- Fixed an unbounded network frame length that let any device on the LAN push\n  memory usage toward the app's limit with a single unauthenticated connection.\n- A silent, unresponsive peer during pairing could lock the app out of pairing\n  with anyone else; pairing now times out and recovers.\n- A connection dropped mid-file-transfer no longer leaves a frozen progress row\n  or an orphaned partial file on disk.\n- Re-enabled the macOS App Sandbox (previously off since v1.0.1 to work around a\n  Keychain hang); the underlying hang is now handled by an existing timeout and\n  fallback, so sandboxing no longer breaks pairing.\n- The identity key's on-disk fallback file (used only when the OS secure store is\n  unavailable) is now encrypted instead of holding the raw key.\n",
       "publishedAt": "2026-07-18T19:25:33Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/localsender/localsender.apk",
-      "sizeBytes": 55313172
+      "sizeBytes": 55802639
     }
   }
 }
