@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T05:07:18.294Z",
+  "generatedAt": "2026-07-20T05:24:18.396Z",
   "apps": {
     "reminder": {
       "version": "2.19.39",
@@ -42,12 +42,12 @@
       "sizeBytes": 60057144
     },
     "localsender": {
-      "version": "1.0.9",
-      "versionCode": 10,
-      "notes": "Local Sender 1.0.9 - Google Drive backup fixed on Android\n\nBackup now uses the native Google sign-in on phones instead of a browser. No\nmessaging or pairing changes; pairs with 1.0.7 and later.\n\n### Features\n- On Android and iPhone, Google Drive backup now signs in with the native Google\n  account picker - no browser, no localhost page.\n\n### Bug fixes\n- Android backup no longer opens a browser that returns to a \"localhost\" page\n  that could not complete the sign-in. Desktop backup is unchanged.\n",
+      "version": "1.0.10",
+      "versionCode": 11,
+      "notes": "Show the app version and PNSJY branding in Settings\n\nSettings now ends with the current app version and the PNSJY store branding, so every\nPNSJY app presents the same footer.\n\n### Features\n\n- The Settings screen now shows the installed app version and a PNSJY brand footer as its\n  last two items, consistent across all PNSJY apps.\n\n### Bug fixes\n\nNo user-facing bug fixes in this release.\n",
       "publishedAt": "2026-07-18T19:25:33Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/localsender/localsender.apk",
-      "sizeBytes": 55285421
+      "sizeBytes": 55313172
     }
   }
 }
