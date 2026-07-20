@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T08:54:33.210Z",
+  "generatedAt": "2026-07-20T08:57:43.341Z",
   "apps": {
     "reminder": {
       "version": "2.19.40",
@@ -18,9 +18,9 @@
       "sizeBytes": 122837048
     },
     "ai-scanner": {
-      "version": "1.4.0",
-      "versionCode": 27,
-      "notes": "# AI Scanner 1.4.0 — search gets its own page\n\nThe app now has three pages instead of one. Search is just search, so an answer is never buried under\nyour whole library. Everything you have scanned lives on a new Library page as a grid of thumbnails,\nand the automatic Groups finally have a place of their own instead of hiding in Settings.\n\n### Features\n- Search page holds only the search box and its results, with example questions before you type.\n- New Library page shows every screenshot as a thumbnail grid, which is far quicker to skim than the\n  old list of wide text cards.\n- Groups (screenshots grouped automatically by content) moved out of Settings onto its own page.\n- A bottom bar switches between Search, Library and Groups.\n\n### Bug fixes\n- The AI answer no longer competes for space with the full screenshot list on the same page.\n- Scan progress, the photo-permission prompt and pull-to-refresh follow the page they belong to,\n  instead of stacking up on a single crowded screen.\n",
+      "version": "1.4.1",
+      "versionCode": 28,
+      "notes": "AI Scanner 1.4.1 — Background update checks, and no more double-downloading updates\n\n### Features\n- AI Scanner now checks for updates periodically in the background (about every 6 hours) and posts a notification when one is found, in addition to the existing manual \"Check for Updates\" in Settings. Tapping the notification opens the app; the download and install still happen from the Settings sheet.\n\n### Bug fixes\n- The update downloader now persists its in-flight DownloadManager id and re-attaches to a still-running download instead of deleting the partial file and starting over — fixes re-downloading the same update from zero after backgrounding or reopening the app mid-update.\n- The update sheet now re-syncs its progress on resume instead of occasionally showing a frozen progress bar.\n",
       "publishedAt": "2026-07-05T09:51:29Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/ai-scanner/ai-scanner.apk",
       "sizeBytes": 219737419
