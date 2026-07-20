@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T05:40:52.490Z",
+  "generatedAt": "2026-07-20T05:53:07.048Z",
   "apps": {
     "reminder": {
       "version": "2.19.39",
@@ -34,12 +34,12 @@
       "sizeBytes": 106999713
     },
     "twinclean": {
-      "version": "1.3.1",
-      "versionCode": 5,
-      "notes": "Diagnostic fix: the 'Connect Google Drive' failure path now shows the real underlying error instead of a generic message, so sign-in issues can actually be diagnosed. No feature changes.",
+      "version": "1.3.2",
+      "versionCode": 6,
+      "notes": "Show the app version and PNSJY branding in Settings\n\nSettings now ends with the current app version and the PNSJY store branding, so every\nPNSJY app presents the same footer.\n\n### Features\n\n- The Settings screen now shows the installed app version and a PNSJY brand footer as its\n  last two items, consistent across all PNSJY apps.\n\n### Bug fixes\n\nNo user-facing bug fixes in this release.\n",
       "publishedAt": "2026-07-07T10:01:03Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/twinclean/twinclean-v1.3.1%2B5.apk",
-      "sizeBytes": 60057144
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/twinclean/twinclean.apk",
+      "sizeBytes": 60317239
     },
     "localsender": {
       "version": "1.0.10",
