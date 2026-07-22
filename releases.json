@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-22T05:54:10.806Z",
+  "generatedAt": "2026-07-22T07:32:54.203Z",
   "apps": {
     "reminder": {
-      "version": "2.19.42",
+      "version": "2.19.43",
       "versionCode": null,
-      "notes": "Release v2.19.42\n\n### Features\nSettings > Debug now has mirror diagnostics: a \"Send test signal\" button that pings Firestore\ndirectly (independent of any real alarm), a live \"last ping\" readout so a second signed-in device\ncan confirm it received it, and a \"View diagnostics log\" screen showing a step-by-step trail of\nthe cross-device alarm-mirror pipeline (uid resolution, Firestore writes/reads, remote actions\napplied) on that device -- no adb/logcat needed to see why a signal did or didn't get through.\n\n### Bug fixes\nNo new fixes in this release -- this is diagnostic tooling to help pin down why the mirror\n(shipped in v2.19.41) is still not reliably stopping the other device's alarm for at least one\nuser, before making another change to the signaling logic itself.\n\n",
+      "notes": "Release v2.19.43\n\n### Features\nNo new features in this release.\n\n### Bug fixes\nDiagnosed further: cross-device Snooze stops the other device's ringing (confirmed working) but\nthat device doesn't re-ring 5 minutes later, unlike the device where Snooze was actually tapped.\nThe re-arm call on Complete/Dismiss/Snooze was previously unguarded -- any exception there (e.g. an\nexact-alarm permission check failing on that specific device) silently aborted before the screen\neven exited, with zero trace. It's now wrapped and logged to the on-device diagnostics log\n(Settings > Debug > View diagnostics log) instead of failing silently, and the alarm screen always\nexits cleanly regardless. This doesn't guess at a fix yet -- it's instrumentation to see the actual\nerror on the next test.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.42.apk",
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.43.apk",
       "sizeBytes": 72244952
     },
     "cards": {
