@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-23T17:26:43.170Z",
+  "generatedAt": "2026-07-23T18:47:33.661Z",
   "apps": {
     "reminder": {
-      "version": "2.19.46",
+      "version": "2.19.47",
       "versionCode": null,
-      "notes": "Two phones stay in step: the right alarm on the right phone\n\nFollow-up to the cross-device work, from a full feature-by-feature audit. Every\naction on one phone now keeps your other phone correctly in sync.\n\n### Features\n- Complete or Dismiss on one phone now updates your other phone right away, the\n  same way Snooze already did -- the other phone re-arms or clears its own alarm\n  within seconds instead of at its next open.\n- Your preferences now sync across phones: reminder tone, ring duration, snooze\n  duration, snooze cycles, after-final-snooze action, time format, and default\n  home view. Change them on one phone and the other follows.\n- A snoozed reminder now shows a \"Snoozed - rings 3:45 pm\" badge, and its snooze\n  time as the next ring. It appears on both phones, so you can see that a snooze\n  taken on one phone reached the other.\n\n### Bug fixes\n- Fixed: a reminder you delete, pause, or complete on one phone could still ring\n  on your other phone. Removing or finishing it now also cancels the alarm that\n  was armed on the other phone.\n- Fixed: after an action taken elsewhere, a phone could keep a stale alarm armed\n  and fire it at the old time. The sync now cancels alarms that no longer apply,\n  not just add new ones.\n\n",
+      "notes": "Reliability update for using Reminder across multiple phones and Google accounts:\n\n- Switching Google accounts no longer mixes one account's reminders into another.\n- Fixed alarms that could keep ringing on a phone after the reminder was deleted or changed on another device.\n- Stronger conflict handling so edits made on two phones don't overwrite each other because of clock differences.\n- Recurring reminders keep advancing correctly after you act on them from the lock screen or notification, even when several fire close together.\n- Snoozed location reminders now re-ring reliably; a one-time reminder that came due while your phone was off now shows a \"missed\" notice.\n- Fewer redundant background wakes and syncs (better battery).\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.46.apk",
-      "sizeBytes": 72595819
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
+      "sizeBytes": 72644971
     },
     "cards": {
       "version": "2.5.0",
