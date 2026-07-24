@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-24T17:06:38.474Z",
+  "generatedAt": "2026-07-24T18:47:51.441Z",
   "apps": {
     "reminder": {
-      "version": "2.19.55",
+      "version": "2.19.56",
       "versionCode": null,
-      "notes": "Polish and reliability (part 5):\n\n- Downloaded photos now appear right away instead of after a refresh, and unused photos are cleaned from your backup.\n- Settings changes on one phone reach your other phone instantly.\n- Repeating \"every N days/weeks\" reminders stay on the correct time across daylight-saving changes.\n- Exporting and re-importing reminders (including ones with photos) now works reliably.\n- Various background sync and battery refinements.\n\n",
+      "notes": "One action per alarm across your devices\n\n### Features\n- An alarm ringing on two devices now resolves to exactly ONE action. The first device to act owns that firing and the other follows it, so two phones can never end up with two different snooze times for the same alarm.\n- A snooze now carries its exact time to your other devices instead of each phone counting its own minutes from whenever it heard, so both re-ring together.\n- Cross-device Complete, Dismiss and Snooze no longer depend on both phones deriving an identical key for the firing. The match is now by occurrence and time, which is what made the mirror work sometimes and not others.\n\n### Bug fixes\n- Snoozing for 15 minutes could ring again in 5. An action handled while the app was closed was replayed as a brand new snooze the next time the app started, cancelling the longer snooze you had set. It is now replayed at the time it originally happened, and skipped when a newer snooze has replaced it or its time has already passed.\n- A reminder completed on one device could ring again from the other device's leftover snooze. A snooze belonging to an occurrence that has already been completed or dismissed is now dropped when the two devices sync.\n- A Complete or Dismiss taken on one device is no longer missed by the other one after a snooze cycle.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
-      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 72874351
+      "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder-app-v2.19.56.apk",
+      "sizeBytes": 72956267
     },
     "cards": {
       "version": "2.5.0",
