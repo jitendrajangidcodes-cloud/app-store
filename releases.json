@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-24T06:29:07.411Z",
+  "generatedAt": "2026-07-24T09:05:35.260Z",
   "apps": {
     "reminder": {
-      "version": "2.19.50",
+      "version": "2.19.51",
       "versionCode": null,
-      "notes": "Reminders now show the full-screen alarm on every phone -- even one that's unlocked and in use -- instead of just a small banner.\n\nThis also fixes cross-device control while unlocked: snoozing, completing, or dismissing a reminder on one phone now reliably stops it ringing on your other phone too.\n\n",
+      "notes": "Deeper multi-device reliability fixes (part 1 of a series):\n\n- Deleting your reminders on one phone no longer lets them reappear from the cloud on your phones.\n- Restoring a cloud backup now sticks across all your phones instead of being silently undone.\n- Actions taken from the lock-screen alarm or a notification (complete/snooze/dismiss) now sync correctly even if a phone's clock is slightly off.\n- Switching Google accounts no longer risks mixing the previous account's reminders into the new one.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 72644971
+      "sizeBytes": 72874347
     },
     "cards": {
       "version": "2.5.0",
