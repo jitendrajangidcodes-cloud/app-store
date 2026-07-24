@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-24T15:13:21.842Z",
+  "generatedAt": "2026-07-24T17:06:38.474Z",
   "apps": {
     "reminder": {
-      "version": "2.19.54",
+      "version": "2.19.55",
       "versionCode": null,
-      "notes": "Reliability fixes for multi-device and settings (part 4):\n\n- A returning phone now reconnects to live sync and stays wake-able without needing a restart.\n- Signing out cleanly stops that phone from being woken for the old account.\n- Picking a system ringtone on one phone no longer changes (or silences) the tone on your other phones.\n- Changing time format or home layout now updates instantly on your other phone.\n- Fixed a rare \"ghost\" alarm that could ring the default tone after the system restarted the app.\n\n",
+      "notes": "Polish and reliability (part 5):\n\n- Downloaded photos now appear right away instead of after a refresh, and unused photos are cleaned from your backup.\n- Settings changes on one phone reach your other phone instantly.\n- Repeating \"every N days/weeks\" reminders stay on the correct time across daylight-saving changes.\n- Exporting and re-importing reminders (including ones with photos) now works reliably.\n- Various background sync and battery refinements.\n\n",
       "publishedAt": "2026-07-04T09:27:07Z",
       "apkUrl": "https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/download/reminder/reminder_app.apk",
-      "sizeBytes": 72874347
+      "sizeBytes": 72874351
     },
     "cards": {
       "version": "2.5.0",
